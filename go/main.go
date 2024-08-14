@@ -1,9 +1,5 @@
 package main
 
-import (
-	"time"
-	"fmt"
-)
 // Esse mapa garante o posicionamento no quadrante
 var quadrante = [][]int {
 	0: {0, 0, 0, 1, 1, 1, 2, 2, 2},
@@ -45,10 +41,13 @@ var quadrantes = [][]int{
 		
 func main() {
 	go imprimeDemoraEmSegundos()
-	tabuleiroValido := geraUmTabuleiroValido(tabuleiro)
-	imprimeTabuleiro(tabuleiroValido)
-	fmt.Println("\nA JANELA FECHARÁ EM 20 SEGUNDOS")
-	time.Sleep(20 * time.Second)
+	for i := 0; i < 50; i++ {
+		tabuleiroValido := geraUmTabuleiroValido(tabuleiro)
+		imprimeTabuleiro(tabuleiroValido)
+		guardaVetor(tabuleiroValido)
+	}
+	//fmt.Println("\nA JANELA FECHARÁ EM 20 SEGUNDOS")
+	//time.Sleep(20 * time.Second)
 
 }
 
