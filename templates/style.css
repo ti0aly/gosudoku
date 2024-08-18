@@ -1,8 +1,27 @@
 h1 {
-    color:rgb(4, 78, 78)
-
+    color:rgb(68, 28, 5);
+    font-size: 60px;
 }
-
 body {
-    background-color: aqua;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    background: linear-gradient(to bottom, rgb(160, 88, 7), rgb(240, 182, 135));
+    height: 100vh; /* Garantir que o fundo cubra toda a altura da tela */
+    margin: 0; /* Remover margens padrão do body */
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(9, 45px);
+    gap: 6px;
+    justify-content: center;
+    margin: 20px;
+}
+.grid-item input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
