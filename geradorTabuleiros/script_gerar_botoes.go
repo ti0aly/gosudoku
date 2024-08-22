@@ -1,4 +1,4 @@
-package main
+/* package main
 
 import (
 	"os"
@@ -16,3 +16,4 @@ func main() {
 
 
 }
+	*/

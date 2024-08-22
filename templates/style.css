@@ -1,20 +1,48 @@
+@charset "UTF-8";
+
+/* Color Theme Swatches in Hex 
+.Ilustração-1-hex { color: #F2EADF; }
+.Ilustração-2-hex { color: #F29E6D; }
+.Ilustração-3-hex { color: #F26849; }
+.Ilustração-4-hex { color: #BF5841; }
+.Ilustração-5-hex { color: #260101; }
+*/
+
 h1 {
-    color:rgb(68, 28, 5);
+    color:#260101;
     font-size: 60px;
+    margin: 0px;
+    text-shadow: 3px 3px 5px #2601018e;
 }
 body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-    background: linear-gradient(to bottom, rgb(160, 88, 7), rgb(240, 182, 135));
+    background: linear-gradient(to bottom, #F29E6D, #F26849, #BF5841, #260101);
     height: 100vh; /* Garantir que o fundo cubra toda a altura da tela */
-    margin: 0; /* Remover margens padrão do body */
+}
+main {
+    width: 480px;
+    background-color: #f7daad;
+    border-radius: 20px;
+    margin: auto;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.527);
+
+}
+
+.grid-of-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    gap: 6px;
+    justify-content: center;
+    padding: 20px;
+   
 }
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(9, 45px);
-    gap: 6px;
+    grid-template-columns: repeat(3, 45px);
+    gap: 4px;
     justify-content: center;
-    margin: 20px;
+    margin-bottom: 10px;
 }
 .grid-item input {
     width: 40px;
@@ -24,4 +52,8 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+}
+
+.atualiza {
+    background-color: #BF5841;
 }
