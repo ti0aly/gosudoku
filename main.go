@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-    fs := http.FileServer(http.Dir("./templates"))
+    fs := http.FileServer(http.Dir("./"))
 	http.Handle("/", fs)
 
 
