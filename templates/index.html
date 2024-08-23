@@ -8,8 +8,18 @@
 
 </head>
 <body>
-    
-    <main>
+    <header>
+        <div class="menu">
+            <input type="button" value="Gerador" class="btmenu" >
+            <input type="button" value="Projeto" class="btmenu">
+            <input type="button" value="Jogar" class="btmenu">
+            <input type="button" value="Ranking" class="btmenu">
+            <input type="button" value="Autor" class="btmenu" onclick="autor()">
+        </div>
+    </header>
+
+
+    <main id="conteudoPagina">
         <h1>SuDoKu</h1>
         
         <div class="grid-of-grid-container">
@@ -112,9 +122,22 @@
             <div class="grid-item"><input type="text" maxlength="1" id="80"></div>
             <div class="grid-item"><input type="text" maxlength="1" id="81"></div>
         </div>
-        <button class="atualiza" id="atualizaTabuleiro">Próximo tabuleiro</button>
+
     </div>
+    <button class="atualiza" id="atualizaTabuleiro">Próximo tabuleiro</button>
     </main>
+    <footer>
+        <div class="rodape">
+            <p>Volte sempre!</p>
+
+        </div>
+    </footer>
+
+
+
     <script src="script.js"></script> 
 </body>
 </html>
+
+
+

@@ -20,3 +20,8 @@ function preencheCampo(tabuleiro) {
         }
     }
 }
+
+function autor() {
+    var div = document.getElementById("conteudoPagina");
+    div.innerHTML = "<h1>Alysson</h1> <p>Este projeto começou Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, repudiandae unde nemo aut ex beatae optio nisi nulla id quisquam ducimus dolore mollitia cum, eum consequatur modi obcaecati, cumque exercitationem?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt maiores temporibus excepturi! Reiciendis molestias nisi nulla officia corrupti deleniti fuga quisquam. Velit dolores repudiandae aspernatur fuga? Fugit porro magni sed.</p>";
+}

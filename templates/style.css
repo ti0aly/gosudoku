@@ -17,43 +17,109 @@ h1 {
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-    background: linear-gradient(to bottom, #F29E6D, #F26849, #BF5841, #260101);
+    background: linear-gradient(to right, #F29E6D, #F26849, #BF5841);
     height: 100vh; /* Garantir que o fundo cubra toda a altura da tela */
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
 }
+
 main {
-    width: 480px;
+    max-width: 600px;
+    min-width: 300px;
+    width: 100%;
     background-color: #f7daad;
     border-radius: 20px;
     margin: auto;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.527);
-
+    padding-bottom: 5px;
 }
 
 .grid-of-grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 150px);
-    gap: 6px;
+    grid-template-columns: repeat(3, 33%);
     justify-content: center;
     padding: 20px;
    
 }
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 45px);
-    gap: 4px;
+    grid-template-columns: repeat(3, 30%);
+    gap: 3px;
     justify-content: center;
     margin-bottom: 10px;
 }
 .grid-item input {
-    width: 40px;
-    height: 40px;
+    width: 100%;
+    height: 100%;
     text-align: center;
-    font-size: 18px;
+    font-size: 100%;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10%;
     box-sizing: border-box;
+    margin-bottom: 50%;
+    gap: 10px;
+}
+
+.grid-item input:hover {
+    border: 1px solid #494949;
 }
 
 .atualiza {
     background-color: #BF5841;
+    margin: auto;
+    align-self: center;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 600px;
+    min-width: 300px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 10px;
+    height: 40px;
+
+}
+
+.btmenu {
+    width: 100%;
+    height: 100%;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-bottom: 5px;
+    font-size: 100%;
+    background-color: #f7daad;
+    border-bottom-left-radius: 18%;
+    border-bottom-right-radius: 18%;
+    border-style: none;
+    box-shadow: 5px 5px 5px rgba(43, 16, 5, 0.644);
+}
+
+.btmenu:hover {
+    font-size: 107%;
+    margin-bottom: 0px;
+    box-shadow: 7px 7px 7px rgba(43, 16, 5, 0.644);
+}
+
+.rodape {
+    max-width: 600px;
+    min-width: 300px;
+    width: 100%;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    height: 40px;
+    background-color: #f7daad;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.527);
+    
+}
+
+p {
+    margin:auto;
 }
