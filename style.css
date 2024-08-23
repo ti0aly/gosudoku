@@ -21,19 +21,19 @@ body {
     height: 100vh; /* Garantir que o fundo cubra toda a altura da tela */
     margin-top: 0px;
     margin-bottom: 0px;
-    display: flex;
-    flex-direction: column;
 }
 
 main {
     max-width: 600px;
     min-width: 300px;
     width: 100%;
+    height:100%;
     background-color: #f7daad;
     border-radius: 20px;
     margin: auto;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.527);
     padding-bottom: 5px;
+
 }
 
 .grid-of-grid-container {
@@ -69,7 +69,11 @@ main {
 .atualiza {
     background-color: #BF5841;
     margin: auto;
+    margin-bottom: 20px;
     align-self: center;
+    width: 200px;
+    min-height: 50px;
+    border-radius: 15%;
 }
 
 .menu {
