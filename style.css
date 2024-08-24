@@ -81,9 +81,13 @@
        
 }
 
-p {
+p, ul {
+    text-align: justify;
+    text-indent: 40px;
     margin:auto;
+    margin: 10px;
 }
+
 
 h1 {
     color:#260101;
@@ -111,6 +115,7 @@ body {
 }
 
 main {
+
     max-width: 500px;
     min-width: 300px;
     width: 100%;
