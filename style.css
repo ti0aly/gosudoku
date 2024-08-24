@@ -11,11 +11,13 @@
 h1 {
     color:#260101;
     font-size: 60px;
+    
     margin: 0px;
     text-shadow: 3px 3px 5px #2601018e;
 }
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #260101;
     text-align: center;
     background: linear-gradient(to right, #F29E6D, #F26849, #BF5841);
     height: 100vh; /* Garantir que o fundo cubra toda a altura da tela */

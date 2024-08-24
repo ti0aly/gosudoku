@@ -1,0 +1,9 @@
+{
+    "name": "SuDoKu BR",
+    "short_name": "SuDoKu",
+    "start_url": "/",
+    "display": "fullscreen",
+    "background_color": "#aaaaaa",
+    "theme_color": "#F29E6D",
+    "prefer_related_applications":false
+}
