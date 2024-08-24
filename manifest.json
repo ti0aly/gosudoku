@@ -1,9 +1,23 @@
 {
     "name": "SuDoKu BR",
     "short_name": "SuDoKu",
-    "start_url": "/",
+    "start_url": "https://ti0aly.github.io/gosudoku/",
     "display": "fullscreen",
     "background_color": "#aaaaaa",
     "theme_color": "#F29E6D",
-    "prefer_related_applications":false
+    "orientation": "portrait",
+    "prefer_related_applications":false,
+    "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+
 }

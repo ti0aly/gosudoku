@@ -8,81 +8,12 @@
 .Ilustração-5-hex { color: #260101; }
 */
 
-h1 {
-    color:#260101;
-    font-size: 60px;
-    
-    margin: 0px;
-    text-shadow: 3px 3px 5px #2601018e;
-}
-body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #260101;
-    text-align: center;
-    background: linear-gradient(to right, #F29E6D, #F26849, #BF5841);
-    height: 100vh; /* Garantir que o fundo cubra toda a altura da tela */
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
-main {
-    max-width: 600px;
-    min-width: 300px;
-    width: 100%;
-    height:100%;
-    background-color: #f7daad;
-    border-radius: 20px;
-    margin: auto;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.527);
-    padding-bottom: 5px;
-
-}
-
-.grid-of-grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 33%);
-    justify-content: center;
-    padding: 20px;
-   
-}
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 30%);
-    gap: 3px;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-.grid-item input {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    font-size: 100%;
-    border: 1px solid #ccc;
-    border-radius: 10%;
-    box-sizing: border-box;
-    margin-bottom: 50%;
-    gap: 10px;
-}
-
-.grid-item input:hover {
-    border: 1px solid #494949;
-}
-
-.atualiza {
-    background-color: #BF5841;
-    margin: auto;
-    margin-bottom: 20px;
-    align-self: center;
-    width: 200px;
-    min-height: 50px;
-    border-radius: 15%;
-}
 
 .menu {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    max-width: 600px;
+    max-width: 500px;
     min-width: 300px;
     width: 100%;
     margin: auto;
@@ -98,7 +29,7 @@ main {
     margin-right: 1px;
     margin-bottom: 5px;
     font-size: 100%;
-    background-color: #f7daad;
+    background: linear-gradient(to bottom,#BF5841, #f7daad, #f7daad , #f7daad ,#f7daad );
     border-bottom-left-radius: 18%;
     border-bottom-right-radius: 18%;
     border-style: none;
@@ -111,8 +42,24 @@ main {
     box-shadow: 7px 7px 7px rgba(43, 16, 5, 0.644);
 }
 
+.atualiza {
+    background-color: #f2684960;
+    margin: auto;
+    align-self: center;
+    width: 200px;
+    min-height: 30px;
+    border-radius: 6%;
+    border-style: groove;
+    border-color: #f2684960;
+}
+
+.atualiza:hover {
+    border-style: groove;
+    border-color: #a1453160;
+    
+}
 .rodape {
-    max-width: 600px;
+    max-width: 500px;
     min-width: 300px;
     width: 100%;
     margin: auto;
@@ -129,3 +76,74 @@ main {
 p {
     margin:auto;
 }
+
+h1 {
+    color:#260101;
+    font-size: 16px;
+    padding-top: 10px;
+    text-shadow: 3px 3px 5px #2601018e;
+}
+h2 {
+    padding: 2%;
+    color:#260101;
+    font-size: 12px;
+    margin: 0px;
+    text-shadow: 3px 3px 5px #2601018e;
+
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #260101;
+    text-align: center;
+    background: linear-gradient(to right, #F29E6D, #F26849, #BF5841);
+    height: 100vh; /* Garantir que o fundo cubra toda a altura da tela */
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+main {
+    max-width: 500px;
+    min-width: 300px;
+    width: 100%;
+    height: 85%;
+    background-color: #f7daad;
+    border-radius: 20px;
+    margin: auto;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.527);
+    padding-bottom: 5px;
+}
+
+.grid-of-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    justify-content: center;
+    padding: 20px;
+   
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    gap: 3px;
+    justify-content: center;
+    border-style: groove;
+    border-color: #f2684960;
+}
+.grid-item input {
+    background-color: #26010100;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 100%;
+    border-style: none;
+    border-radius: 10%;
+    box-sizing: border-box;
+    margin-bottom: 50%;
+    gap: 10px;
+}
+
+.grid-item input:hover {
+    background-color: #26010123;
+}
+
+
