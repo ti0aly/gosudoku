@@ -23,6 +23,7 @@
 }
 
 .btmenu {
+    color: #260101;
     width: 100%;
     height: 100%;
     margin-left: 1px;
@@ -37,12 +38,14 @@
 }
 
 .btmenu:hover {
+    color: #260101;
     font-size: 107%;
     margin-bottom: 0px;
     box-shadow: 7px 7px 7px rgba(43, 16, 5, 0.644);
 }
 
 .atualiza {
+    color: #260101;
     background-color: #f2684960;
     margin: auto;
     align-self: center;
@@ -58,6 +61,8 @@
     border-color: #a1453160;
     
 }
+
+
 .rodape {
     max-width: 500px;
     min-width: 300px;
@@ -106,7 +111,7 @@ main {
     max-width: 500px;
     min-width: 300px;
     width: 100%;
-    height: 85%;
+    height: 100%;
     background-color: #f7daad;
     border-radius: 20px;
     margin: auto;

@@ -11,9 +11,9 @@
     <header>
         <div class="menu">
             <input type="button" value="Gerador" class="btmenu" onclick='window.location.href="https://ti0aly.github.io/gosudoku";' >
-            <input type="button" value="Projeto" class="btmenu">
-            <input type="button" value="Jogar" class="btmenu">
-            <input type="button" value="Ranking" class="btmenu">
+            <input type="button" value="Projeto" class="btmenu" onclick="projeto()">
+            <input type="button" value="Jogar" class="btmenu" onclick="jogar()">
+            <input type="button" value="Ranking" class="btmenu" onclick="ranking()">
             <input type="button" value="Autor" class="btmenu" onclick="autor()">
         </div>
     </header>
@@ -23,7 +23,7 @@
         <h1>SuDoKu</h1>
         <h2>Clique para gerar um tabuleiro aleatório:</h2>
         <input type="button" class="atualiza" id="atualizaTabuleiro" value="GERAR NOVO TABULEIRO"></input>
-    
+        <div id="loader" class="loader"></div>
         <div class="grid-of-grid-container">
         <div class="grid-container">
             <div class="grid-item"><input type="text" maxlength="1" id="1"></div>

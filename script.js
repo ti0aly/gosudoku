@@ -1,8 +1,7 @@
 let tabuleiro = Array(9).fill().map(() => Array(9).fill(0));
 
 preencheCampo(tabuleiro);
-
-document.getElementById('atualizaTabuleiro').addEventListener('click', () => {geraUmTabuleiroValido(tabuleiro);});
+document.getElementById('atualizaTabuleiro').addEventListener('click', () => {avisaGerador();});
 
 function preencheCampo(tabuleiro) {
     let idCampo = 1;
@@ -17,7 +16,22 @@ function preencheCampo(tabuleiro) {
 
 function autor() {
     var div = document.getElementById("conteudoPagina");
-    div.innerHTML = '<h1>Alysson</h1> <p>Este projeto começou Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, repudiandae unde nemo aut ex beatae optio nisi nulla id quisquam ducimus dolore mollitia cum, eum consequatur modi obcaecati, cumque exercitationem?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt maiores temporibus excepturi! Reiciendis molestias nisi nulla officia corrupti deleniti fuga quisquam. Velit dolores repudiandae aspernatur fuga? Fugit porro magni sed.</p>';
+    div.innerHTML = '<h1>Alysson</h1> <p>Nascido em Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, repudiandae unde nemo aut ex beatae optio nisi nulla id quisquam ducimus dolore mollitia cum, eum consequatur modi obcaecati, cumque exercitationem?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt maiores temporibus excepturi! Reiciendis molestias nisi nulla officia corrupti deleniti fuga quisquam. Velit dolores repudiandae aspernatur fuga? Fugit porro magni sed.</p>';
+}
+
+function projeto() {
+    var div = document.getElementById("conteudoPagina");
+    div.innerHTML = '<h1>Projeto</h1> <p>Este projeto começou Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, repudiandae unde nemo aut ex beatae optio nisi nulla id quisquam ducimus dolore mollitia cum, eum consequatur modi obcaecati, cumque exercitationem?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt maiores temporibus excepturi! Reiciendis molestias nisi nulla officia corrupti deleniti fuga quisquam. Velit dolores repudiandae aspernatur fuga? Fugit porro magni sed.</p>';
+}
+
+function ranking() {
+    var div = document.getElementById("conteudoPagina");
+    div.innerHTML = '<h1>Ranking</h1> <p>Veja aqui quem são os melhores do mundo Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, repudiandae unde nemo aut ex beatae optio nisi nulla id quisquam ducimus dolore mollitia cum, eum consequatur modi obcaecati, cumque exercitationem?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt maiores temporibus excepturi! Reiciendis molestias nisi nulla officia corrupti deleniti fuga quisquam. Velit dolores repudiandae aspernatur fuga? Fugit porro magni sed.</p>';
+}
+
+function jogar() {
+    var div = document.getElementById("conteudoPagina");
+    div.innerHTML = '<h1>Jogue agora mesmo</h1> <p>PLAAAAAYY em ipsum dolor sit amet consectetur adipisicing elit. Quae, repudiandae unde nemo aut ex beatae optio nisi nulla id quisquam ducimus dolore mollitia cum, eum consequatur modi obcaecati, cumque exercitationem?</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt maiores temporibus excepturi! Reiciendis molestias nisi nulla officia corrupti deleniti fuga quisquam. Velit dolores repudiandae aspernatur fuga? Fugit porro magni sed.</p>';
 }
 
 function sorteiaNumeroDeUmVetor(vetor) {
@@ -73,13 +87,17 @@ function atribuiQuadrantes(tabuleiro) {
     ];
 }
 
+function avisaGerador() {
+    document.getElementById('atualizaTabuleiro').value = 'processando...';
+    setTimeout(() => {
+        geraUmTabuleiroValido(tabuleiro);
+    }, 0);
+}
+
 function geraUmTabuleiroValido(tabuleiro) {
     let posicoesPossiveis;
     let linha, coluna;
     let count = 0;
-
-
-
     while (true) {
         count++;
         for (let num = 1; num <= 9; num++) {
@@ -88,11 +106,9 @@ function geraUmTabuleiroValido(tabuleiro) {
                 if (posicoesPossiveis.length > 0) {
                     [linha, coluna] = sorteiaNumeroDeUmVetor(posicoesPossiveis);
                     tabuleiro[linha][coluna] = num;
-                    
                 }
             }
         }
-
         if (!verificaTabuleiro(tabuleiro)) {
             preencheCampo(tabuleiro);
             console.log("Numero de tentativas: ", count);
@@ -102,8 +118,8 @@ function geraUmTabuleiroValido(tabuleiro) {
             preencheCampo(tabuleiro);
         }
     }
-
     console.log(tabuleiro);
+    document.getElementById('atualizaTabuleiro').value = 'GERAR NOVO TABULEIRO';
 }
 
 function verify(x, vetor) {
@@ -126,4 +142,3 @@ const quadrante = [
     [6, 6, 6, 7, 7, 7, 8, 8, 8],
     [6, 6, 6, 7, 7, 7, 8, 8, 8]
 ];
-
