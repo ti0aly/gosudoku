@@ -44,12 +44,31 @@
     box-shadow: 7px 7px 7px rgba(43, 16, 5, 0.644);
 }
 
+.numeros {
+    color: #260101;
+    background-color: #f2684960;
+    margin: auto;
+    align-self: center;
+    width: 9%;
+    min-height: 30px;
+    border-radius: 6%;
+    border-style: groove;
+    border-color: #f2684960;
+}
+
+.numeros:hover {
+    border-style: groove;
+    border-color: #a1453160;
+    
+}
+
+
 .atualiza {
     color: #260101;
     background-color: #f2684960;
     margin: auto;
     align-self: center;
-    width: 200px;
+    width: 17%;
     min-height: 30px;
     border-radius: 6%;
     border-style: groove;

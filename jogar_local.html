@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo</title>
+    <title>SuDoKu</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
+    <header>
+        <div class="menu">
+            <input type="button" value="Gerador" class="btmenu" onclick='window.location.href="https://ti0aly.github.io/gosudoku";' >
+            <input type="button" value="Projeto" class="btmenu" onclick="projeto()">
+            <input type="button" value="Jogar" class="btmenu" onclick='window.location.href="https://ti0aly.github.io/gosudoku/jogar_local.html";' >
+            <input type="button" value="Ranking" class="btmenu" onclick="ranking()">
+            <input type="button" value="Autor" class="btmenu">
+        </div>
+    </header>
+
+
     <main id="conteudoPagina">
         <h1>SuDoKu</h1>
-        <input type="button" class="atualiza" id="atualizaTabuleiroOculto" value="Começar!"></input>
+        <h2 id="nivelDoJogo">Escolha o nível do jogo:</h2>
+        <input type="button" class="atualiza" id="atualizaTabuleiroOculto1" value="Moleza"></input>
+        <input type="button" class="atualiza" id="atualizaTabuleiroOculto2" value="Fácil"></input>
+        <input type="button" class="atualiza" id="atualizaTabuleiroOculto3" value="Médio"></input>
+        <input type="button" class="atualiza" id="atualizaTabuleiroOculto4" value="Difícil"></input>
+        <input type="button" class="atualiza" id="atualizaTabuleiroOculto5" value="Extremo"></input>
         <div id="loader" class="loader"></div>
         <div class="grid-of-grid-container">
         <div class="grid-container">
@@ -112,9 +129,35 @@
             <div class="grid-item"><input type="text" maxlength="1" id="81"></div>
         </div>
 
-    </div>
-    </main>
-    <script src="script.js"></script> 
 
+    </div>
+    <input type="button" value="1" class="numeros" id="num1">
+    <input type="button" value="2" class="numeros" id="num2">
+    <input type="button" value="3" class="numeros" id="num3">
+    <input type="button" value="4" class="numeros" id="num4">
+    <input type="button" value="5" class="numeros" id="num5">
+    <input type="button" value="6" class="numeros" id="num6">
+    <input type="button" value="7" class="numeros" id="num7">
+    <input type="button" value="8" class="numeros" id="num8">
+    <input type="button" value="9" class="numeros" id="num9">
+
+
+    </main>
+    
+    <footer>
+        
+        <div class="rodape">
+            <p>2024 - SuDoKu BR - ti0aly</p>
+
+        </div>
+    </footer>
+
+
+    
+    <script src="script.js"></script> 
+    <script src="scriptjogo.js"></script>
 </body>
 </html>
+
+
+
