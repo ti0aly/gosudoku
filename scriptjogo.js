@@ -1,4 +1,20 @@
+function loadCabecalhoeRodape() {
+    fetch('https://ti0aly.github.io/gosudoku/header.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('cabecalho').innerHTML = data);
+
+        fetch('https://ti0aly.github.io/gosudoku/footer.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('rodape').innerHTML = data);
+}
+
+window.onload = loadCabecalhoeRodape;
+
 var erros = 0; 
+
+
+
+
 
 document.getElementById('atualizaTabuleiroOculto1').addEventListener('click', () => {inicioDeJogo(1), document.getElementById('nivelDoJogo').innerHTML = 'Nível Moleza';});
 document.getElementById('atualizaTabuleiroOculto2').addEventListener('click', () => {inicioDeJogo(30), document.getElementById('nivelDoJogo').innerHTML = 'Nível Fácil';});
