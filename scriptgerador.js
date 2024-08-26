@@ -4,6 +4,7 @@ document.getElementById('atualizaTabuleiro').addEventListener('click', () => {av
 
 
 function preencheCampo(tabuleiro) {
+    
     let idCampo = 1;
     for (let linha = 0; linha < 9; linha++) {
         for (let coluna = 0; coluna < 9; coluna++) {
@@ -91,7 +92,7 @@ function geraUmTabuleiroValido(tabuleiro) {
         }
         if (!verificaTabuleiro(tabuleiro)) {
             preencheCampo(tabuleiro);
-            console.log("Numero de tentativas: ", count);
+            document.getElementById('tabuleiroGerado').innerHTML = 'Aqui está seu tabuleiro gerado pelo javascript no seu navegador, foram realizadas ' + count + ' tentativas até completá-lo:';
             break;
         } else {
             tabuleiro = Array(9).fill().map(() => Array(9).fill(0));
