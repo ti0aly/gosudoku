@@ -185,7 +185,6 @@ function registraRanking() {
     let tempo = elapsedTime;
     let numeroDeErros = erros;
     document.getElementById('tituloPagina').innerHTML = nome + "<br>Você terminou em " + formatTime(tempo) + " minutos.<br>Número de erros: " + numeroDeErros;
-    document.getElementById('jogarNovamente').style.display = 'none';
     document.getElementById('registraRanking').style.display = 'none';
     document.getElementById('digitaNome').style.display = 'none';
     document.getElementById('timer').style.display = 'none';
