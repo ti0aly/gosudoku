@@ -44,10 +44,7 @@
     box-shadow: 7px 7px 7px rgba(43, 16, 5, 0.644);
 }
 
-.error {
-    border-bottom: red;
-    color: red;
-}
+
 
 
 .numeros {
@@ -95,7 +92,7 @@
     align-self: center;
     width: 60%;
     min-height: 30px;
-    border-radius: 6%;
+    border-radius: 6px;
     border-style: groove;
     border-color: #f2684960;
 }
@@ -121,6 +118,12 @@
     border-top-right-radius: 20px;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.527);
        
+}
+
+.inputMaroto {
+    color: #260101;
+    font-weight: bold;
+    font-size: 120%;
 }
 
 p, ul {
@@ -206,3 +209,17 @@ main {
 }
 
 
+.error {
+    border-bottom: red;
+    color: red;
+}
+
+.nomeProRanking {
+    width: 60%;
+    min-height: 30px;
+    border-radius: 6px;
+}
+
+.fimDeJogo {
+    margin: 10px;
+}
