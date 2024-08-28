@@ -10,8 +10,7 @@ function loadCabecalhoeRodape() {
 
 window.onload = loadCabecalhoeRodape;
 
-
-let tabuleiro = Array(9).fill().map(() => Array(9).fill(0));
+let tabuleiro = Array(9).fill().map(() => Array(9).fill(0));;
 let time;
 
 document.getElementById('atualizaTabuleiro').addEventListener('click', () => {avisaGerador();});
@@ -82,11 +81,20 @@ function atribuiQuadrantes(tabuleiro) {
     ];
 }
 
+function limpaDisplayDoTabuleiro() {
+    for (let id = 1; id <= 81; id++) {
+        document.getElementById(id).value = '';
+        }
+}
+
 function avisaGerador() {
     time = performance.now();
-    document.getElementById('atualizaTabuleiro').value = 'processando...';
-    document.getElementById('tituloGerador').textContent = ' ';
-    
+    limpaDisplayDoTabuleiro();
+    document.getElementById('atualizaTabuleiro').style.display = 'none';
+    document.getElementById('tituloGerador').style.display = 'none';
+    document.getElementById('tabuleiroGerado').textContent = 'Aguarde o processamento...';
+    document.getElementById('loading').style.display = '';  
+
     setTimeout(() => {
         geraUmTabuleiroValido(tabuleiro);
     }, 0);
@@ -114,12 +122,13 @@ function geraUmTabuleiroValido(tabuleiro) {
         
         tabuleiro = Array(9).fill().map(() => Array(9).fill(0));
         }
+    document.getElementById('loading').style.display = 'none';  
     preencheCampo(tabuleiro);
     updateTimer(time);
     let elapsedTime = performance.now() - time;
-    document.getElementById('tabuleiroGerado').innerHTML = 'Aqui está seu tabuleiro gerado pelo javascript no seu navegador.<br>Foram realizadas ' + count + ' tentativas.<br>Tempo exato transcorrido ' + formatTime(elapsedTime) ;
+    document.getElementById('tabuleiroGerado').innerHTML = 'Tabuleiro gerado pelo seu navegador.<br>Foram realizadas ' + count + ' tentativas.<br>Tempo transcorrido em segundos: ' + formatTime(elapsedTime) ;
     console.log(tabuleiro);
-    document.getElementById('atualizaTabuleiro').value = 'GERAR NOVO TABULEIRO';
+    document.getElementById('atualizaTabuleiro').style.display = '';
 }
 
 
@@ -154,15 +163,13 @@ function formatTime(ms) {
     let totalSegundos = Math.floor(ms / 1000);
   
     // Calcula minutos e segundos restantes
-    let minutos = Math.floor(totalSegundos / 60);
     let segundos = totalSegundos % 60;
-  
+    let centesimos = Math.floor((ms % 1000) / 10);
     // Adiciona um zero à esquerda se os minutos ou segundos forem menores que 10
-    minutos = minutos < 10 ? `0${minutos}` : minutos;
     segundos = segundos < 10 ? `0${segundos}` : segundos;
-  
+    centesimos = centesimos < 10 ? `0${centesimos}` : centesimos;
     // Retorna o tempo formatado como mm:ss
-    return `${minutos}:${segundos}`;
+    return `${segundos}:${centesimos}`;
   }
 
 function updateTimer(time) {

@@ -14,13 +14,13 @@
 
 
     <main id="conteudoPagina">
-        <h1>SuDoKu</h1>
+        <h1 id="tituloPagina">SuDoKu</h1>
         <div id="timer">00:00</div>
         <h2 id="tituloGerador">Clique para gerar um novo tabuleiro aleatório<br>(o processo pode demorar de 1 a 20 segundos):</h2>
 
         <input type="button" class="atualiza" id="atualizaTabuleiro" value="GERAR NOVO TABULEIRO"></input>
         <h2 id="tabuleiroGerado"></h2>
-        <div id="loader" class="loader"></div>
+        <div id="loading" class="spinner" style="display: none;"></div>
         <div class="grid-of-grid-container">
         <div class="grid-container">
             <div class="grid-item"><input type="text" maxlength="1" id="1"></div>
