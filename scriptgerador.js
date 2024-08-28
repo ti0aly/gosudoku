@@ -10,10 +10,12 @@ function loadCabecalhoeRodape() {
 
 window.onload = loadCabecalhoeRodape;
 
+
 let tabuleiro = Array(9).fill().map(() => Array(9).fill(0));
+let time;
 
 document.getElementById('atualizaTabuleiro').addEventListener('click', () => {avisaGerador();});
-
+document.getElementById('timer').style.display = 'none';
 
 function preencheCampo(tabuleiro) {
     
@@ -81,7 +83,10 @@ function atribuiQuadrantes(tabuleiro) {
 }
 
 function avisaGerador() {
+    time = performance.now();
     document.getElementById('atualizaTabuleiro').value = 'processando...';
+    document.getElementById('tituloGerador').textContent = ' ';
+    
     setTimeout(() => {
         geraUmTabuleiroValido(tabuleiro);
     }, 0);
@@ -91,6 +96,7 @@ function geraUmTabuleiroValido(tabuleiro) {
     let posicoesPossiveis;
     let linha, coluna;
     let count = 0;
+    
     while (true) {
         count++;
         for (let num = 1; num <= 9; num++) {
@@ -103,17 +109,20 @@ function geraUmTabuleiroValido(tabuleiro) {
             }
         }
         if (!verificaTabuleiro(tabuleiro)) {
-            preencheCampo(tabuleiro);
-            document.getElementById('tabuleiroGerado').innerHTML = 'Aqui está seu tabuleiro gerado pelo javascript no seu navegador, foram realizadas ' + count + ' tentativas até completá-lo:';
-            break;
-        } else {
-            tabuleiro = Array(9).fill().map(() => Array(9).fill(0));
-            preencheCampo(tabuleiro);
+            break
         }
-    }
+        
+        tabuleiro = Array(9).fill().map(() => Array(9).fill(0));
+        }
+    preencheCampo(tabuleiro);
+    updateTimer(time);
+    let elapsedTime = performance.now() - time;
+    document.getElementById('tabuleiroGerado').innerHTML = 'Aqui está seu tabuleiro gerado pelo javascript no seu navegador.<br>Foram realizadas ' + count + ' tentativas.<br>Tempo exato transcorrido ' + formatTime(elapsedTime) ;
     console.log(tabuleiro);
     document.getElementById('atualizaTabuleiro').value = 'GERAR NOVO TABULEIRO';
 }
+
+
 
 function verify(x, vetor) {
     return vetor.includes(x);
@@ -135,4 +144,29 @@ const quadrante = [
     [6, 6, 6, 7, 7, 7, 8, 8, 8],
     [6, 6, 6, 7, 7, 7, 8, 8, 8]
 ];
+
+
+
+
+
+function formatTime(ms) {
+    // Converte milissegundos para segundos
+    let totalSegundos = Math.floor(ms / 1000);
+  
+    // Calcula minutos e segundos restantes
+    let minutos = Math.floor(totalSegundos / 60);
+    let segundos = totalSegundos % 60;
+  
+    // Adiciona um zero à esquerda se os minutos ou segundos forem menores que 10
+    minutos = minutos < 10 ? `0${minutos}` : minutos;
+    segundos = segundos < 10 ? `0${segundos}` : segundos;
+  
+    // Retorna o tempo formatado como mm:ss
+    return `${minutos}:${segundos}`;
+  }
+
+function updateTimer(time) {
+    let elapsedTime = performance.now() - time;
+    document.getElementById('timer').textContent = formatTime(elapsedTime);
+}
 
