@@ -2,6 +2,9 @@ var erros = 0;
 var tabuleiroAtual;
 var inputSelecionada = null;
 
+
+
+
 function loadCabecalhoeRodape() {
     fetch('https://ti0aly.github.io/gosudoku/header.html')
         .then(response => response.text())
@@ -25,10 +28,10 @@ document.querySelectorAll('.inputMaroto').forEach(input => {
 });
 
 document.getElementById('atualizaTabuleiroOculto1').addEventListener('click', () => {inicioDeJogo(1), document.getElementById('tituloPagina').innerHTML = 'Nível Moleza';});
-document.getElementById('atualizaTabuleiroOculto2').addEventListener('click', () => {inicioDeJogo(30), document.getElementById('tituloPagina').innerHTML = 'Nível Fácil';});
-document.getElementById('atualizaTabuleiroOculto3').addEventListener('click', () => {inicioDeJogo(40), document.getElementById('tituloPagina').innerHTML = 'Nível Médio';});
-document.getElementById('atualizaTabuleiroOculto4').addEventListener('click', () => {inicioDeJogo(50), document.getElementById('tituloPagina').innerHTML = 'Nível Difícil';});
-document.getElementById('atualizaTabuleiroOculto5').addEventListener('click', () => {inicioDeJogo(65), document.getElementById('tituloPagina').innerHTML = 'Nível Extremo';});
+document.getElementById('atualizaTabuleiroOculto2').addEventListener('click', () => {inicioDeJogo(28), document.getElementById('tituloPagina').innerHTML = 'Nível Fácil';});
+document.getElementById('atualizaTabuleiroOculto3').addEventListener('click', () => {inicioDeJogo(35), document.getElementById('tituloPagina').innerHTML = 'Nível Médio';});
+document.getElementById('atualizaTabuleiroOculto4').addEventListener('click', () => {inicioDeJogo(45), document.getElementById('tituloPagina').innerHTML = 'Nível Difícil';});
+document.getElementById('atualizaTabuleiroOculto5').addEventListener('click', () => {inicioDeJogo(55), document.getElementById('tituloPagina').innerHTML = 'Nível Extremo';});
 document.getElementById('num1').addEventListener('click', () => {preencheInputSelecionada(1)});
 document.getElementById('num2').addEventListener('click', () => {preencheInputSelecionada(2)});
 document.getElementById('num3').addEventListener('click', () => {preencheInputSelecionada(3)});
