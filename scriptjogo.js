@@ -148,6 +148,7 @@ function exibeVitoria() {
     stopTimer();
     document.getElementById('tituloPagina').innerHTML = 'Você ganhou!';
     document.getElementById('botoesNum').style.display = 'none';
+    document.getElementById('botoesNum2').style.display = 'none';
     document.getElementById('loader').innerHTML = '<br><br>Muito bem!<br>Vamos adicionar seu nome no Ranking:<br><br>'
     document.getElementById('jogarNovamente').style.display = '';
     document.getElementById('registraRanking').style.display = '';
