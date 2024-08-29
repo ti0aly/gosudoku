@@ -2,9 +2,7 @@ var erros = 0;
 var tabuleiroAtual;
 var inputSelecionada = null;
 
-
-
-
+window.onload = loadCabecalhoeRodape;
 function loadCabecalhoeRodape() {
     fetch('https://ti0aly.github.io/gosudoku/header.html')
         .then(response => response.text())
@@ -14,19 +12,6 @@ function loadCabecalhoeRodape() {
         .then(response => response.text())
         .then(data => document.getElementById('rodape').innerHTML = data);
 }
-
-window.onload = loadCabecalhoeRodape;
-document.getElementById('jogarNovamente').style.display = 'none';
-document.getElementById('registraRanking').style.display = 'none';
-document.getElementById('digitaNome').style.display = 'none';
-
-document.querySelectorAll('.inputMaroto').forEach(input => {
-    input.addEventListener('focus', function() {
-        inputSelecionada = this;
-        marcaItemPeloValor(inputSelecionada.value);
-        console.log(inputSelecionada.id);
-    });
-});
 
 document.getElementById('atualizaTabuleiroOculto1').addEventListener('click', () => {inicioDeJogo(1), document.getElementById('tituloPagina').innerHTML = 'Nível Moleza';});
 document.getElementById('atualizaTabuleiroOculto2').addEventListener('click', () => {inicioDeJogo(28), document.getElementById('tituloPagina').innerHTML = 'Nível Fácil';});
@@ -43,18 +28,27 @@ document.getElementById('num7').addEventListener('click', () => {preencheInputSe
 document.getElementById('num8').addEventListener('click', () => {preencheInputSelecionada(8)});
 document.getElementById('num9').addEventListener('click', () => {preencheInputSelecionada(9)});
 document.getElementById('registraRanking').addEventListener('click', () => {registraRanking()});
-
-
-
+document.getElementById('jogarNovamente').style.display = 'none';
+document.getElementById('registraRanking').style.display = 'none';
+document.getElementById('digitaNome').style.display = 'none';
+document.querySelectorAll('.inputMaroto').forEach(input => {
+    input.addEventListener('focus', function() {
+        inputSelecionada = this;
+        marcaItemPeloValor(inputSelecionada.value);
+    });
+});
 
 function marcaItemPeloValor(valor) {
     for (let id = 1; id <= 81; id++) {
-        if (document.getElementById(id).value == valor) {
+        document.getElementById(id).classList.remove('select');
+    }
+
+    for (let id = 1; id <= 81; id++) {
+        if (document.getElementById(id).value == valor && document.getElementById(id).value != ' ') {
             document.getElementById(id).classList.add('select');
         }
     }
 }
-
 
 function inicioDeJogo(quantidade) {
     tabuleiroAtual = [[3, 8, 4, 1, 5, 7, 2, 9, 6], [5, 2, 9, 3, 4, 6, 1, 7, 8], [7, 6, 1, 9, 8, 2, 4, 3, 5], [4, 9, 6, 7, 2, 8, 5, 1, 3], [1, 3, 8, 6, 9, 5, 7, 2, 4], [2, 5, 7, 4, 1, 3, 8, 6, 9], [9, 7, 5, 8, 6, 1, 3, 4, 2], [8, 4, 3, 2, 7, 9, 6, 5, 1], [6, 1, 2, 5, 3, 4, 9, 8, 7]]; 
@@ -72,8 +66,6 @@ function preencheInputSelecionada(valor) {
             alert("Selecione um campo de input");
         }
     }
-
-
 
 function verificaFimDeJogo(tabuleiroAtual) {
     let ganhou = true;
@@ -140,7 +132,6 @@ function geraListaRandomica(quantidade) {
             randomList.push(randomNum);
         } 
     }
-    console.log(randomList);
     return randomList;
 }
 

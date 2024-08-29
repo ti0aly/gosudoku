@@ -42,29 +42,51 @@
     font-size: 107%;
     margin-bottom: 0px;
     box-shadow: 7px 7px 7px rgba(43, 16, 5, 0.644);
+    font-weight: 700;
 }
 
 
 
 
 .numeros {
+    width: 50px;
+    min-height: 50px;
     color: #260101;
     background-color: #f2684960;
     margin: auto;
-    margin-bottom: 30px;
-    align-self: center;
-    width: 9%;
-    min-height: 30px;
-    border-radius: 6%;
+    border-radius: 100%;
     border-style: groove;
     border-color: #f2684960;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.37);
+
 }
 
 .numeros:hover {
     border-style: groove;
     border-color: #a1453160;
-    
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.37);
+    font-weight: 700;
 }
+
+#botoesNum {
+
+    padding-left: 13%;
+    padding-right: 13%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 botões na primeira linha */
+    grid-gap: 10px;
+    justify-content: center;
+    padding-bottom: 5px;
+  }
+
+#botoesNum2 {
+    padding-left: 21%;
+    padding-right: 21%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 botões na segunda linha */
+    grid-gap: 10px;
+    justify-content: center;
+  }
 
 
 .atualizaNivel {
@@ -77,11 +99,14 @@
     border-radius: 6%;
     border-style: groove;
     border-color: #f2684960;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.37);
 }
 
 .atualizaNivel:hover {
     border-style: groove;
     border-color: #a1453160;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.37);
+    font-weight: 700;
     
 }
 
@@ -122,7 +147,7 @@
 
 .inputMaroto {
     color: #260101;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 120%;
 }
 
@@ -188,8 +213,10 @@ main {
     grid-template-columns: repeat(3, 30%);
     gap: 3px;
     justify-content: center;
-    border-style: groove;
+    border-radius: 15px;
+    border-style: solid;
     border-color: #f2684960;
+    border-width: 1px;
 }
 .grid-item input {
     background-color: #26010100;
@@ -202,10 +229,12 @@ main {
     box-sizing: border-box;
     margin-bottom: 50%;
     gap: 10px;
+
 }
 
 .grid-item input:hover {
     background-color: #26010123;
+    
 }
 
 
@@ -240,5 +269,6 @@ main {
   }
 
   .select {
-    background-color: black;
+    background: linear-gradient(to left, #26010123, #26010123);
   }
+
