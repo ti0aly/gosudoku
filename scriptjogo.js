@@ -23,6 +23,7 @@ document.getElementById('digitaNome').style.display = 'none';
 document.querySelectorAll('.inputMaroto').forEach(input => {
     input.addEventListener('focus', function() {
         inputSelecionada = this;
+        marcaItemPeloValor(inputSelecionada.value);
         console.log(inputSelecionada.id);
     });
 });
@@ -43,6 +44,16 @@ document.getElementById('num8').addEventListener('click', () => {preencheInputSe
 document.getElementById('num9').addEventListener('click', () => {preencheInputSelecionada(9)});
 document.getElementById('registraRanking').addEventListener('click', () => {registraRanking()});
 
+
+
+
+function marcaItemPeloValor(valor) {
+    for (let id = 1; id <= 81; id++) {
+        if (document.getElementById(id).value == valor) {
+            document.getElementById(id).classList.add('select');
+        }
+    }
+}
 
 
 function inicioDeJogo(quantidade) {
