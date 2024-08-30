@@ -185,7 +185,6 @@ function resetTimer() {
     document.getElementById('timer').textContent = formatTime(elapsedTime);
 }
 
-
 function registraRanking() {
     let nome = document.getElementById('digitaNome').value;
     let tempo = elapsedTime;

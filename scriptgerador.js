@@ -176,24 +176,3 @@ function updateTimer(time) {
     let elapsedTime = performance.now() - time;
     document.getElementById('timer').textContent = formatTime(elapsedTime);
 }
-
-const firebaseConfig = {
-    apiKey: "AIzaSyCRqKH9m9y2E7Cp1518WZt3WLryafoebPQ",
-    authDomain: "bd-sudoku.firebaseapp.com",
-    projectId: "bd-sudoku",
-    storageBucket: "bd-sudoku.appspot.com",
-    messagingSenderId: "545448621634",
-    appId: "1:545448621634:web:821376de1542931ed3dfdb",
-    measurementId: "G-PB2B8PBNBJ"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-// Inicializar o Firebase Storage
-const storage = getStorage(app);
-
-// Referência ao arquivo no Storage
-const tabelaRef = ref(storage, 'arquivoCSV.csv');
-
-console.log(tabelaRef);
