@@ -2,135 +2,152 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>SuDoKu</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <header id="cabecalho">
-
-    </header>
+    <header id="cabecalho"></header>
 
 
     <main id="conteudoPagina">
         <h1 id="tituloPagina">SuDoKu</h1>
-        <div id="timer">00:000</div>
-        <h2 id="tituloGerador">Clique para gerar um novo tabuleiro aleatório<br>(o processo pode demorar de 1 a 20 segundos):</h2>
-
-        <input type="button" class="atualiza" id="atualizaTabuleiro" value="GERAR NOVO TABULEIRO"></input>
-        <h2 id="tabuleiroGerado"></h2>
-        <div id="loading" class="spinner" style="display: none;"></div>
-        <div class="grid-of-grid-container">
+        <div id="timer">00:00</div>
+        <h2 id="nivelDoJogo">Escolha o nível do jogo:</h2>
+        <input type="button" class="atualizaNivel" id="atualizaTabuleiroOculto1" value="Moleza"></input>
+        <input type="button" class="atualizaNivel" id="atualizaTabuleiroOculto2" value="Fácil"></input>
+        <input type="button" class="atualizaNivel" id="atualizaTabuleiroOculto3" value="Médio"></input>
+        <input type="button" class="atualizaNivel" id="atualizaTabuleiroOculto4" value="Difícil"></input>
+        <input type="button" class="atualizaNivel" id="atualizaTabuleiroOculto5" value="Extremo"></input>
+        <div id="loader" class="loader"></div>
+        <input type="text" class="nomeProRanking fimDeJogo" id="digitaNome">
+        <input type="button" value="Enviar" class="atualiza fimDeJogo" id="registraRanking">
+        <input type="button" value="Jogar Novamente" class="atualiza fimDeJogo" id="jogarNovamente" onclick='window.location.href="https://ti0aly.github.io/gosudoku/jogar_local.html";'>
+        <div class="grid-of-grid-container" id="tabuleiroGrande">
         <div class="grid-container">
-            <div class="grid-item"><input type="text" maxlength="1" id="1"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="2"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="3"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="4"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="5"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="6"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="7"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="8"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="9"></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="1" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="2" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="3" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="10" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="11" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="12" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="19" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="20"class="inputMaroto" readonly ></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="21" class="inputMaroto" readonly></div>
         </div>
         <div class="grid-container">
-            <div class="grid-item"><input type="text" maxlength="1" id="10"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="11"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="12"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="13"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="14"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="15"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="16"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="17"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="18"></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="4" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="5" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="6" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="13" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="14" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="15" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="22" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="23" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="24" class="inputMaroto" readonly></div>
         </div>
         <div class="grid-container">
-            <div class="grid-item"><input type="text" maxlength="1" id="19"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="20"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="21"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="22"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="23"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="24"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="25"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="26"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="27"></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="7" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="8" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="9" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="16" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="17" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="18" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="25" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="26" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="27" class="inputMaroto" readonly></div>
         </div>
         <div class="grid-container">
-            <div class="grid-item"><input type="text" maxlength="1" id="28"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="29"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="30"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="31"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="32"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="33"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="34"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="35"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="36"></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="28" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="29" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="30" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="37" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="38" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="39" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="46" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="47" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="48" class="inputMaroto" readonly></div>
         </div>
         <div class="grid-container">
-            <div class="grid-item"><input type="text" maxlength="1" id="37"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="38"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="39"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="40"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="41"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="42"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="43"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="44"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="45"></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="31" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="32" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="33" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="40" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="41" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="42" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="49" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="50" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="51" class="inputMaroto" readonly></div>
         </div>
         <div class="grid-container">
-            <div class="grid-item"><input type="text" maxlength="1" id="46"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="47"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="48"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="49"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="50"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="51"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="52"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="53"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="54"></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="34" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="35" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="36" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="43" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="44" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="45" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="52" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="53" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="54" class="inputMaroto" readonly></div>
         </div>
         <div class="grid-container">
-            <div class="grid-item"><input type="text" maxlength="1" id="55"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="56"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="57"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="58"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="59"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="60"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="61"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="62"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="63"></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="55" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="56" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="57" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="64" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="65" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="66" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="73" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="74" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="75" class="inputMaroto" readonly></div>
         </div>    
         <div class="grid-container">
-            <div class="grid-item"><input type="text" maxlength="1" id="64"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="65"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="66"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="67"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="68"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="69"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="70"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="71"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="72"></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="58" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="59" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="60" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="67" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="68" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="69" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="76" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="77" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="78" class="inputMaroto" readonly></div>
         </div>
         <div class="grid-container">
-            <div class="grid-item"><input type="text" maxlength="1" id="73"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="74"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="75"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="76"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="77"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="78"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="79"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="80"></div>
-            <div class="grid-item"><input type="text" maxlength="1" id="81"></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="61" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="62" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="63" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="70" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="71" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="72" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="79" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="80" class="inputMaroto" readonly></div>
+            <div class="grid-item"><input type="text" maxlength="1" id="81" class="inputMaroto" readonly></div>
         </div>
-
     </div>
+
+    <div id="botoesNum">
+        <input type="button" value="1" class="numeros" id="num1" >
+        <input type="button" value="2" class="numeros" id="num2">
+        <input type="button" value="3" class="numeros" id="num3">
+        <input type="button" value="4" class="numeros" id="num4">
+        <input type="button" value="5" class="numeros" id="num5">
+    </div>
+    <div id="botoesNum2">
+        <input type="button" value="6" class="numeros" id="num6">
+        <input type="button" value="7" class="numeros" id="num7">
+        <input type="button" value="8" class="numeros" id="num8">
+        <input type="button" value="9" class="numeros" id="num9">
+    </div>
+
+    <h2 id="mostraErros"></h2>
+
     </main>
     
     <footer id="rodape"></footer>
-    <script src="scriptgerador.js"></script>
- 
-    <script type="module" src="bdsudoku.js">
-    </script>
-    
+
+    <script src="scripts/scriptjogo.js"></script>
 </body>
 </html>
 
