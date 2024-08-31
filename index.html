@@ -24,7 +24,7 @@
         <div id="loader" class="loader"></div>
         <input type="text" class="nomeProRanking fimDeJogo" id="digitaNome">
         <input type="button" value="Enviar" class="atualiza fimDeJogo" id="registraRanking">
-        <input type="button" value="Jogar Novamente" class="atualiza fimDeJogo" id="jogarNovamente" onclick='window.location.href="https://ti0aly.github.io/gosudoku/jogar_local.html";'>
+        <input type="button" value="Jogar Novamente" class="atualiza fimDeJogo" id="jogarNovamente" onclick='window.location.href="https://ti0aly.github.io/gosudoku/";'>
         <div class="grid-of-grid-container" id="tabuleiroGrande">
         <div class="grid-container">
             <div class="grid-item"><input type="text" maxlength="1" id="1" class="inputMaroto" readonly></div>
@@ -146,8 +146,9 @@
     </main>
     
     <footer id="rodape"></footer>
-
-    <script src="scripts/scriptjogo.js"></script>
+    <script type="module" src="scripts/bdsudoku.js"></script>
+    <script type="module" src="scripts/scriptjogo.js"></script>
+    
 </body>
 </html>
 

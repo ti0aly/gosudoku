@@ -1,45 +1,70 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-import { getAnalytics} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
-import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js";
+import { getDatabase, get, ref, update } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+import { getFirestore, doc, setDoc, getDoc, addDoc, collection } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js';
 
- // Your web app's Firebase configuration
- // For Firebase JS SDK v7.20.0 and later, measurementId is optional
- const firebaseConfig = {
-   apiKey: "AIzaSyCRqKH9m9y2E7Cp1518WZt3WLryafoebPQ",
-   authDomain: "bd-sudoku.firebaseapp.com",
-   databaseURL: "https://bd-sudoku-default-rtdb.firebaseio.com",
-   projectId: "bd-sudoku",
-   storageBucket: "bd-sudoku.appspot.com",
-   messagingSenderId: "545448621634",
-   appId: "1:545448621634:web:821376de1542931ed3dfdb",
-   measurementId: "G-PB2B8PBNBJ"
- };
+const firebaseConfig = {
+  apiKey: "AIzaSyCRqKH9m9y2E7Cp1518WZt3WLryafoebPQ",
+  authDomain: "bd-sudoku.firebaseapp.com",
+  databaseURL: "https://bd-sudoku-default-rtdb.firebaseio.com",
+  projectId: "bd-sudoku",
+  storageBucket: "bd-sudoku.appspot.com",
+  messagingSenderId: "545448621634",
+  appId: "1:545448621634:web:821376de1542931ed3dfdb",
+  measurementId: "G-PB2B8PBNBJ"
+};
 
- // Initialize Firebase
- const app = initializeApp(firebaseConfig);
- const analytics = getAnalytics(app);
-// Inicializar o Firebase Storage
-const storage = getStorage();
-const tabelaRef = ref(storage, 'gs://bd-sudoku.appspot.com/tabelas/arquivoCSV.csv');
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const db = getFirestore(app); 
+const rootRef = ref(database, '/');
 
-console.log(tabelaRef);
+export async function consultaDados() {
+  try {
+      const snapshot = await get(rootRef);
+      if (snapshot.exists()) {
+          const data = snapshot.val();
+          return Object.keys(data).length
+      } else {
+          console.log('Nenhum dado disponível');
+          return null;
+      }
+  } catch (error) {
+      console.error('Erro ao consultar os dados:', error);
+      return null;
+  }
+}
 
-// Obtém a URL de download do arquivo
-getDownloadURL(tabelaRef)
-  .then((url) => {
-    console.log('URL gerada:', url);
-    return fetch(url);  // Tente acessar a URL diretamente no navegador para testar
-  })
-  .then(response => response.text())
-  .then(data => {
-    console.log('Dados do arquivo:', data);
-    const lines = data.split('\n');
-    const specificLine = lines[1];
-    console.log('Linha específica:', specificLine);
-  })
-  .catch((error) => {
-    console.error('Erro ao processar o arquivo CSV:', error);
-  });
+export async function salvaDados(dados) {
+  let tamanho = await consultaDados();
+  console.log('tamanho do bd: ', tamanho);
+  const dadosParaAtualizar = {
+    [tamanho]: dados
+};
+  return update(rootRef, dadosParaAtualizar)
+      .then(() => {
+          console.log('Dados salvos com sucesso!');
+          document.getElementById('salvaTabuleiro').textContent = ('Obrigado! Você adicionou este tabuleiro ao nosso banco de dados. Já temos ' + tamanho + ' tabuleiros salvos pelos usuários.');
+      })
+      .catch((error) => {
+          console.error('Erro ao salvar dados:', error);
+      });
+}
+
+export async function salvarDadosRanking(nome, tempo) {
+  try {
+      const docRef = doc(db, 'nivelMoleza', 'teste.json');
+      console.log(docRef);
+      await setDoc(docRef, 
+        {
+          "nome": nome,
+          "tempo": tempo
+      }
+    );
+
+      console.log('Dados salvos com sucesso!');
+  } catch (error) {
+      console.error('Erro ao salvar dados:', error);
+  }
+}

@@ -1,3 +1,5 @@
+import { salvarDadosRanking } from './bdsudoku.js';
+
 var erros = 0; 
 var tabuleiroAtual;
 var inputSelecionada = null;
@@ -186,9 +188,12 @@ function resetTimer() {
 }
 
 function registraRanking() {
+
     let nome = document.getElementById('digitaNome').value;
     let tempo = elapsedTime;
     let numeroDeErros = erros;
+    
+    salvarDadosRanking('josue', 230);
     document.getElementById('tituloPagina').innerHTML = nome + "<br>Você terminou em " + formatTime(tempo) + " minutos.<br>Número de erros: " + numeroDeErros;
     document.getElementById('registraRanking').style.display = 'none';
     document.getElementById('digitaNome').style.display = 'none';

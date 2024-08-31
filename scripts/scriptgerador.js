@@ -1,3 +1,6 @@
+import { salvaDados } from './bdsudoku.js';
+
+
 function loadCabecalhoeRodape() {
     fetch('https://ti0aly.github.io/gosudoku/header.html')
         .then(response => response.text())
@@ -14,8 +17,9 @@ let tabuleiro = Array(9).fill().map(() => Array(9).fill(0));;
 let time;
 
 document.getElementById('atualizaTabuleiro').addEventListener('click', () => {avisaGerador();});
-document.getElementById('timer').style.display = 'none';
 
+document.getElementById('timer').style.display = 'none';
+document.getElementById('salvaTabuleiro').style.display = 'none';
 function preencheCampo(tabuleiro) {
     
     let idCampo = 1;
@@ -95,6 +99,7 @@ function avisaGerador() {
     document.getElementById('tabuleiroGerado').textContent = 'Aguarde o processamento...';
     document.getElementById('loading').style.display = '';  
 
+
     setTimeout(() => {
         geraUmTabuleiroValido(tabuleiro);
     }, 0);
@@ -124,10 +129,11 @@ function geraUmTabuleiroValido(tabuleiro) {
         }
     document.getElementById('loading').style.display = 'none';  
     preencheCampo(tabuleiro);
+    salvaDados(tabuleiro);
     updateTimer(time);
     let elapsedTime = performance.now() - time;
+    document.getElementById('salvaTabuleiro').style.display = '';
     document.getElementById('tabuleiroGerado').innerHTML = 'Tabuleiro gerado pelo seu navegador.<br>Foram realizadas ' + count + ' tentativas.<br>Tempo transcorrido em segundos: ' + formatTime(elapsedTime) ;
-    console.log(tabuleiro);
     document.getElementById('atualizaTabuleiro').style.display = '';
 }
 
