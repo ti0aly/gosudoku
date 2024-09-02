@@ -1,8 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js";
-import { getDatabase, get, ref, update } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+import { getDatabase, get, ref, update, push} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 import { getFirestore, doc, setDoc, getDoc, addDoc, collection } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCRqKH9m9y2E7Cp1518WZt3WLryafoebPQ",
@@ -20,12 +21,15 @@ const database = getDatabase(app);
 const db = getFirestore(app); 
 const rootRef = ref(database, '/');
 
-export async function consultaDados() {
+export async function consultaTabuleiroAleatorio() {
   try {
       const snapshot = await get(rootRef);
       if (snapshot.exists()) {
           const data = snapshot.val();
-          return Object.keys(data).length
+          const keys = Object.keys(data);
+          const randomKey = keys[Math.floor(Math.random() * keys.length)];
+          const entradaAleatoria = data[randomKey];
+          return [entradaAleatoria, randomKey];
       } else {
           console.log('Nenhum dado disponível');
           return null;
@@ -36,30 +40,55 @@ export async function consultaDados() {
   }
 }
 
+export async function consultaTamanhoDados() {
+  try {
+      const snapshot = await get(rootRef);
+      
+      if (snapshot.exists()) {
+          const data = snapshot.val();
+          const keys = Object.keys(data);
+          const tabuleirosKey = keys[0];
+          return tabuleirosKey.length
+      } else {
+          console.log('Nenhum dado disponível');
+          return null;
+      }
+  } catch (error) {
+      console.error('Erro ao consultar os dados:', error);
+      return null;
+  }
+}
+
+
 export async function salvaDados(dados) {
-  let tamanho = await consultaDados();
-  console.log('tamanho do bd: ', tamanho);
   const dadosParaAtualizar = {
-    [tamanho]: dados
+    0 : {
+      1 : dados
+  }
 };
-  return update(rootRef, dadosParaAtualizar)
+  return push(rootRef, dadosParaAtualizar)
+  //return update(rootRef, dadosParaAtualizar) 
       .then(() => {
           console.log('Dados salvos com sucesso!');
-          document.getElementById('salvaTabuleiro').textContent = ('Obrigado! Você adicionou este tabuleiro ao nosso banco de dados. Já temos ' + tamanho + ' tabuleiros salvos pelos usuários.');
+          document.getElementById('salvaTabuleiro').textContent = ('Obrigado! Você adicionou este tabuleiro ao banco de dados.');
       })
       .catch((error) => {
           console.error('Erro ao salvar dados:', error);
       });
 }
 
-export async function salvarDadosRanking(nome, tempo) {
+export async function salvarDadosRanking(nomePlayer, tempoPlayer) {
   try {
-      const docRef = doc(db, 'nivelMoleza', 'teste.json');
-      console.log(docRef);
+      console.log('nome: ', nomePlayer);
+      console.log('tempo: ', tempoPlayer);
+      const docRef = doc(db, 'nivelMoleza', 'teste');
+      console.log('docRef: ', docRef);
       await setDoc(docRef, 
         {
-          "nome": nome,
-          "tempo": tempo
+          Nome: nomePlayer,
+          erros: 44,
+          nivel: "Moleza",
+          tempo: tempoPlayer
       }
     );
 

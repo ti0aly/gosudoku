@@ -1,8 +1,9 @@
-import { salvarDadosRanking } from './bdsudoku.js';
+import { salvarDadosRanking, consultaTabuleiroAleatorio} from './bdsudoku.js';
 
 var erros = 0; 
 var tabuleiroAtual;
 var inputSelecionada = null;
+var numeroDoArray;
 
 window.onload = loadCabecalhoeRodape;
 function loadCabecalhoeRodape() {
@@ -32,6 +33,7 @@ document.getElementById('num9').addEventListener('click', () => {preencheInputSe
 document.getElementById('registraRanking').addEventListener('click', () => {registraRanking()});
 document.getElementById('jogarNovamente').style.display = 'none';
 document.getElementById('registraRanking').style.display = 'none';
+document.getElementById('mostraNumeroDoJogo').style.display = 'none';
 document.getElementById('digitaNome').style.display = 'none';
 document.querySelectorAll('.inputMaroto').forEach(input => {
     input.addEventListener('focus', function() {
@@ -52,11 +54,15 @@ function marcaItemPeloValor(valor) {
     }
 }
 
-function inicioDeJogo(quantidade) {
-    tabuleiroAtual = [[3, 8, 4, 1, 5, 7, 2, 9, 6], [5, 2, 9, 3, 4, 6, 1, 7, 8], [7, 6, 1, 9, 8, 2, 4, 3, 5], [4, 9, 6, 7, 2, 8, 5, 1, 3], [1, 3, 8, 6, 9, 5, 7, 2, 4], [2, 5, 7, 4, 1, 3, 8, 6, 9], [9, 7, 5, 8, 6, 1, 3, 4, 2], [8, 4, 3, 2, 7, 9, 6, 5, 1], [6, 1, 2, 5, 3, 4, 9, 8, 7]]; 
+async function inicioDeJogo(quantidade) {
+    [tabuleiroAtual, numeroDoArray] = await consultaTabuleiroAleatorio();
+    console.log('tabuleiro sorteado: ', tabuleiroAtual);
+    console.log('chave do Array: ', numeroDoArray);
+    document.getElementById('mostraNumeroDoJogo').style.display = '';
+    document.getElementById('mostraNumeroDoJogo').innerHTML = 'ID do tabuleiro: ' + numeroDoArray;
     let posicoesOcultas = geraListaRandomica(quantidade);
     preencheCampoQuantidadeOculta(tabuleiroAtual, posicoesOcultas);
-    document.getElementById('nivelDoJogo').remove();
+    document.getElementById('nivelDoJogo').style.display = 'none';
     startTimer();
 }
 
@@ -188,11 +194,9 @@ function resetTimer() {
 }
 
 function registraRanking() {
-
     let nome = document.getElementById('digitaNome').value;
     let tempo = elapsedTime;
     let numeroDeErros = erros;
-    
     salvarDadosRanking('josue', 230);
     document.getElementById('tituloPagina').innerHTML = nome + "<br>Você terminou em " + formatTime(tempo) + " minutos.<br>Número de erros: " + numeroDeErros;
     document.getElementById('registraRanking').style.display = 'none';

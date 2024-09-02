@@ -66,6 +66,7 @@
     border-color: #a1453160;
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.37);
     font-weight: 700;
+    cursor: pointer;
 }
 
 #botoesNum {
@@ -86,6 +87,7 @@
     grid-template-columns: repeat(4, 1fr); /* 4 botões na segunda linha */
     grid-gap: 10px;
     justify-content: center;
+    cursor: pointer;
   }
 
 
@@ -107,6 +109,7 @@
     border-color: #a1453160;
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.37);
     font-weight: 700;
+    cursor: pointer;
     
 }
 
@@ -120,11 +123,13 @@
     border-radius: 6px;
     border-style: groove;
     border-color: #f2684960;
+
 }
 
 .atualiza:hover {
     border-style: groove;
     border-color: #a1453160;
+    cursor: pointer;
     
 }
 .rodape {
@@ -149,15 +154,21 @@
     color: #260101;
     font-weight: 700;
     font-size: 120%;
+    cursor: pointer;
 }
 
-p, ul {
+p {
     text-align: justify;
-    text-indent: 40px;
+    text-indent: 30px;
     margin:auto;
-    margin: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
+ul {
+    margin: 10px;
+    text-align: justify;
+}
 
 h1 {
     color:#260101;
@@ -197,7 +208,7 @@ main {
     border-radius: 20px;
     margin: auto;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.527);
-    padding-bottom: 5px;
+    padding-bottom: 40px;
 }
 
 .grid-of-grid-container {
@@ -269,5 +280,9 @@ main {
 
   .select {
     background: linear-gradient(to left, #26010123, #26010123);
+  }
+
+  #mostraNumeroDoJogo {
+    padding: 0;
   }
 
