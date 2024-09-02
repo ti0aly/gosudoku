@@ -4,6 +4,7 @@ var erros = 0;
 var tabuleiroAtual;
 var inputSelecionada = null;
 var numeroDoArray;
+var nivelDoJogoAtual;
 
 window.onload = loadCabecalhoeRodape;
 function loadCabecalhoeRodape() {
@@ -16,11 +17,11 @@ function loadCabecalhoeRodape() {
         .then(data => document.getElementById('rodape').innerHTML = data);
 }
 
-document.getElementById('atualizaTabuleiroOculto1').addEventListener('click', () => {inicioDeJogo(1), document.getElementById('tituloPagina').innerHTML = 'Nível Moleza';});
-document.getElementById('atualizaTabuleiroOculto2').addEventListener('click', () => {inicioDeJogo(28), document.getElementById('tituloPagina').innerHTML = 'Nível Fácil';});
-document.getElementById('atualizaTabuleiroOculto3').addEventListener('click', () => {inicioDeJogo(35), document.getElementById('tituloPagina').innerHTML = 'Nível Médio';});
-document.getElementById('atualizaTabuleiroOculto4').addEventListener('click', () => {inicioDeJogo(45), document.getElementById('tituloPagina').innerHTML = 'Nível Difícil';});
-document.getElementById('atualizaTabuleiroOculto5').addEventListener('click', () => {inicioDeJogo(55), document.getElementById('tituloPagina').innerHTML = 'Nível Extremo';});
+document.getElementById('atualizaTabuleiroOculto1').addEventListener('click', () => {inicioDeJogo(1, 1), document.getElementById('tituloPagina').innerHTML = 'Nível Moleza';});
+document.getElementById('atualizaTabuleiroOculto2').addEventListener('click', () => {inicioDeJogo(2, 2), document.getElementById('tituloPagina').innerHTML = 'Nível Fácil';});
+document.getElementById('atualizaTabuleiroOculto3').addEventListener('click', () => {inicioDeJogo(3, 3), document.getElementById('tituloPagina').innerHTML = 'Nível Médio';});
+document.getElementById('atualizaTabuleiroOculto4').addEventListener('click', () => {inicioDeJogo(4, 4), document.getElementById('tituloPagina').innerHTML = 'Nível Difícil';});
+document.getElementById('atualizaTabuleiroOculto5').addEventListener('click', () => {inicioDeJogo(5, 5), document.getElementById('tituloPagina').innerHTML = 'Nível Extremo';});
 document.getElementById('num1').addEventListener('click', () => {preencheInputSelecionada(1)});
 document.getElementById('num2').addEventListener('click', () => {preencheInputSelecionada(2)});
 document.getElementById('num3').addEventListener('click', () => {preencheInputSelecionada(3)});
@@ -54,7 +55,8 @@ function marcaItemPeloValor(valor) {
     }
 }
 
-async function inicioDeJogo(quantidade) {
+async function inicioDeJogo(quantidade, nivel) {
+    nivelDoJogoAtual = nivel; 
     [tabuleiroAtual, numeroDoArray] = await consultaTabuleiroAleatorio();
     console.log('tabuleiro sorteado: ', tabuleiroAtual);
     console.log('chave do Array: ', numeroDoArray);
@@ -197,10 +199,13 @@ function registraRanking() {
     let nome = document.getElementById('digitaNome').value;
     let tempo = elapsedTime;
     let numeroDeErros = erros;
-    salvarDadosRanking('josue', 230);
+    let nivel = nivelDoJogoAtual;
+    salvarDadosRanking(nome, tempo, numeroDeErros, nivel);
     document.getElementById('tituloPagina').innerHTML = nome + "<br>Você terminou em " + formatTime(tempo) + " minutos.<br>Número de erros: " + numeroDeErros;
     document.getElementById('registraRanking').style.display = 'none';
     document.getElementById('digitaNome').style.display = 'none';
     document.getElementById('timer').style.display = 'none';
     document.getElementById('loader').style.display = 'none';
+    
+    window.location.replace('https://ti0aly.github.io/gosudoku/ranking.html');
 }

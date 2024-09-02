@@ -10,10 +10,18 @@
 <body>
     <header id="cabecalho"></header>
     <main id="conteudoPagina">
-        <h1 id="tituloPagina">Em breve...</h1>
+        <h1 id="tituloPagina">Ranking Geral Sudoku BR</h1>
+        <div class="paragrafoRanking" id="rankingExtremo"></div>
+        <div class="paragrafoRanking" id="rankingDificil"></div>
+        <div class="paragrafoRanking" id="rankingMedio"></div>
+        <div class="paragrafoRanking" id="rankingFacil"></div>
+        <div class="paragrafoRanking" id="rankingMoleza"></div>
+
+        <input type="button" value="Bora jogar!" class="atualiza fimDeJogo" id="jogarNovamente" style="display: none;" onclick='window.location.href="https://ti0aly.github.io/gosudoku/";'></input>
+            
     </main>
-    
-    <script src="scripts/scriptRanking.js"></script>
+    <script type="module" src="scripts/bdsudoku.js"></script>
+    <script type="module" src="scripts/scriptRanking.js"></script>
     <footer id="rodape"></footer>
 </body>
 </html>

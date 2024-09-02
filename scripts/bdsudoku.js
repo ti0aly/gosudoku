@@ -1,9 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js";
 import { getDatabase, get, ref, update, push} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
-import { getFirestore, doc, setDoc, getDoc, addDoc, collection } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js';
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyCRqKH9m9y2E7Cp1518WZt3WLryafoebPQ",
@@ -18,12 +15,16 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const db = getFirestore(app); 
-const rootRef = ref(database, '/');
+const nodeTabuleiros = ref(database, '/tabuleiros/');
+const rankingMoleza = ref(database, '/ranking/moleza/');
+const rankingFacil = ref(database, '/ranking/facil/');
+const rankingMedio = ref(database, '/ranking/medio/');
+const rankingDificil = ref(database, '/ranking/dificil/');
+const rankingExtremo = ref(database, '/ranking/extremo/');
 
 export async function consultaTabuleiroAleatorio() {
   try {
-      const snapshot = await get(rootRef);
+      const snapshot = await get(nodeTabuleiros);
       if (snapshot.exists()) {
           const data = snapshot.val();
           const keys = Object.keys(data);
@@ -40,14 +41,71 @@ export async function consultaTabuleiroAleatorio() {
   }
 }
 
-export async function consultaTamanhoDados() {
+export async function consultaRankings() {
   try {
-      const snapshot = await get(rootRef);
+      const moleza = await get(rankingMoleza);
+      const facil = await get(rankingFacil);
+      const medio = await get(rankingMedio);
+      const dificil = await get(rankingDificil);
+      const extremo = await get(rankingExtremo);
+
+      const dataMoleza = moleza.val();
+      const dataFacil = facil.val();
+      const dataMedio = medio.val();
+      const dataDificil = dificil.val();
+      const dataExtremo = extremo.val();
+      
+      let valoresMolezaLista = Array;
+      let valoresFacilLista = Array;
+      let valoresMedioLista = Array;
+      let valoresDificilLista = Array;
+      let valoresExtremoLista = Array;
+
+      valoresMolezaLista = Object.keys(dataMoleza);
+      valoresFacilLista = Object.keys(dataFacil);
+      valoresMedioLista = Object.keys(dataMedio);
+      valoresDificilLista = Object.keys(dataDificil);
+      valoresExtremoLista = Object.keys(dataExtremo);
+
+      let valoresMoleza = [];
+      let valoresFacil = [];
+      let valoresMedio = [];
+      let valoresDificil = [];
+      let valoresExtremo = [];
+
+      for (const chave of valoresMolezaLista) {
+        valoresMoleza.push(dataMoleza[chave]);
+      }
+      for (const chave of valoresFacilLista) {
+        valoresFacil.push(dataFacil[chave]);
+      }
+      for (const chave of valoresMedioLista) {
+        valoresMedio.push(dataMedio[chave]);
+      }
+
+      for (const chave of valoresDificilLista) {
+        valoresFacil.push(dataDificil[chave]);
+      }
+
+      for (const chave of valoresExtremoLista) {
+        valoresExtremo.push(dataExtremo[chave]);
+      }
+      
+      return [valoresMoleza, valoresFacil, valoresMedio, valoresDificil, valoresExtremo];
+  } catch (error) {
+      console.error('Erro ao consultar os dados de ranking.', error);
+      return null;
+  }
+}
+
+export async function consultaTamanhoDados(nodePassadoParaConsulta) {
+  try {
+      const snapshot = await get(nodePassadoParaConsulta);
       
       if (snapshot.exists()) {
           const data = snapshot.val();
           const keys = Object.keys(data);
-          const tabuleirosKey = keys[0];
+          const tabuleirosKey = keys;
           return tabuleirosKey.length
       } else {
           console.log('Nenhum dado disponível');
@@ -59,41 +117,62 @@ export async function consultaTamanhoDados() {
   }
 }
 
-
 export async function salvaDados(dados) {
+  const tamanho = await consultaTamanhoDados(nodeTabuleiros);
+  console.log('tamanho do bd: ', tamanho);
   const dadosParaAtualizar = {
-    0 : {
-      1 : dados
-  }
+    [tamanho] : dados
 };
-  return push(rootRef, dadosParaAtualizar)
-  //return update(rootRef, dadosParaAtualizar) 
+  return update(nodeTabuleiros, dadosParaAtualizar)
       .then(() => {
           console.log('Dados salvos com sucesso!');
-          document.getElementById('salvaTabuleiro').textContent = ('Obrigado! Você adicionou este tabuleiro ao banco de dados.');
+          document.getElementById('salvaTabuleiro').textContent = ('Obrigado! Você adicionou este tabuleiro ao nosso banco de dados. Já temos ' + tamanho + ' tabuleiros salvos pelos usuários.');
       })
       .catch((error) => {
           console.error('Erro ao salvar dados:', error);
       });
 }
 
-export async function salvarDadosRanking(nomePlayer, tempoPlayer) {
-  try {
-      console.log('nome: ', nomePlayer);
-      console.log('tempo: ', tempoPlayer);
-      const docRef = doc(db, 'nivelMoleza', 'teste');
-      console.log('docRef: ', docRef);
-      await setDoc(docRef, 
-        {
-          Nome: nomePlayer,
-          erros: 44,
-          nivel: "Moleza",
-          tempo: tempoPlayer
-      }
-    );
-
-      console.log('Dados salvos com sucesso!');
-  } catch (error) {
-      console.error('Erro ao salvar dados:', error);
+export async function salvarDadosRanking(nome, tempo, erros, nivel) {
+  let nodeDoRanking;
+  switch (nivel) {
+    case 1:
+      nodeDoRanking = rankingMoleza;
+      break;
+    case 2:
+      nodeDoRanking = rankingFacil;
+      break;
+    case 3:
+      nodeDoRanking = rankingMedio;
+      break;
+    case 4:
+      nodeDoRanking = rankingDificil;
+      break;
+    case 5:
+      nodeDoRanking = rankingExtremo;
+    default:
+      console.log('Erro ao selecionar ranking.');
   }
+  let tamanho = await consultaTamanhoDados(nodeDoRanking);
+  if (tamanho === null) {
+    tamanho = 0;
+  }
+  const dadosJogador = {
+    'nome' : nome,
+    'tempo': tempo,
+    'erros' : erros,
+    'nivel' : nivel
+  };
+  const dadosParaAtualizar = {
+    [tamanho] : dadosJogador
+    
+  };
+
+return update(nodeDoRanking, dadosParaAtualizar)
+      .then(() => {
+          console.log('Dados salvos com sucesso!');
+      })
+      .catch((error) => {
+          console.error('Erro ao salvar dados:', error);
+      });  
 }
