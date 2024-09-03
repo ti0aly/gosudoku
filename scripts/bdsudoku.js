@@ -164,7 +164,7 @@ export async function salvarDadosRanking(nome, tempo, erros, nivel) {
     'nivel' : nivel
   };
   const dadosParaAtualizar = {
-    [tamanho] : dadosJogador
+    [tamanho + 1] : dadosJogador
     
   };
 

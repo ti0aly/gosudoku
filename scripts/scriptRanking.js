@@ -6,7 +6,7 @@ function loadCabecalhoeRodape() {
         .then(response => response.text())
         .then(data => document.getElementById('cabecalho').innerHTML = data);
 
-        fetch('https://ti0aly.github.io/gosudoku/footer.html')
+    fetch('https://ti0aly.github.io/gosudoku/footer.html')
         .then(response => response.text())
         .then(data => document.getElementById('rodape').innerHTML = data);
 }
