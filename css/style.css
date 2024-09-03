@@ -28,13 +28,14 @@
     height: 100%;
     margin-left: 1px;
     margin-right: 1px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-size: 100%;
     background: linear-gradient(to bottom,#BF5841, #f7daad, #f7daad , #f7daad ,#f7daad );
     border-bottom-left-radius: 18%;
     border-bottom-right-radius: 18%;
     border-style: none;
     box-shadow: 5px 5px 5px rgba(43, 16, 5, 0.644);
+    cursor: pointer;
 }
 
 .btmenu:hover {
@@ -55,18 +56,17 @@
     background-color: #f2684960;
     margin: auto;
     border-radius: 100%;
-    border-style: groove;
-    border-color: #f2684960;
+    border-style: none;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.37);
 
 }
 
 .numeros:hover {
-    border-style: groove;
-    border-color: #a1453160;
+    border-style: none;
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.37);
     font-weight: 700;
     cursor: pointer;
+    background-color: #f2684981;
 }
 
 #botoesNum {
@@ -99,14 +99,13 @@
     width: 17%;
     min-height: 30px;
     border-radius: 6%;
-    border-style: groove;
-    border-color: #f2684960;
+    border-style: none;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.37);
+    
 }
 
 .atualizaNivel:hover {
-    border-style: groove;
-    border-color: #a1453160;
+    border-style: none;
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.37);
     font-weight: 700;
     cursor: pointer;
@@ -121,14 +120,16 @@
     width: 60%;
     min-height: 30px;
     border-radius: 6px;
-    border-style: groove;
+    border-style: none;
     border-color: #f2684960;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.37);
 
 }
 
 .atualiza:hover {
-    border-style: groove;
-    border-color: #a1453160;
+    border-style: none;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.37);
+    font-weight: 700;
     cursor: pointer;
     
 }
@@ -147,7 +148,12 @@
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.527);
-       
+    padding: 0px;
+ 
+}
+.rodape:hover {
+    cursor: default;
+    padding: 2px;
 }
 
 .inputMaroto {
@@ -185,9 +191,7 @@ h2 {
 
 }
 
-.textoRodape {
-    margin: auto;
-}
+
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -227,6 +231,7 @@ main {
     border-style: solid;
     border-color: #f2684960;
     border-width: 1px;
+    aspect-ratio: 1 / 1;
 }
 .grid-item input {
     background-color: #26010100;
@@ -301,14 +306,30 @@ main {
     padding: 10px;
     margin: auto;
     width: 100%;
+    margin-bottom: 30px;
+
   }
 
   th {
-    background-color: #00000023; /* Cor de fundo do cabeçalho */
+    background: linear-gradient(to bottom, #26010115 #26010115, #26010115, #26010115, #26010115, #f7daad);
+    border-radius: 4px;
 }
 
 td {
     width: 33%;
     height: 30px;
-    background-color: #ffffff52; /* Cor de fundo do cabeçalho */
+    background: linear-gradient(to bottom,  #00000015, #00000015, #00000015, #00000015, #00000015, #f7daad);
+    border-radius: 4px;
+}
+
+.textoRodape {
+    margin: auto;
+    text-indent: 0;
+    text-shadow: 3px 3px 2px #2601014d; 
+}
+
+.textoRodape:hover {
+    margin: auto;
+    text-indent: 0;
+    text-shadow: 3px 3px 2px #2601014d; 
 }

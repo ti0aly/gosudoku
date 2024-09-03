@@ -17,7 +17,6 @@ let tabuleiro = Array(9).fill().map(() => Array(9).fill(0));;
 let time;
 
 document.getElementById('atualizaTabuleiro').addEventListener('click', () => {avisaGerador();});
-
 document.getElementById('timer').style.display = 'none';
 document.getElementById('salvaTabuleiro').style.display = 'none';
 function preencheCampo(tabuleiro) {
@@ -93,13 +92,13 @@ function limpaDisplayDoTabuleiro() {
 
 function avisaGerador() {
     time = performance.now();
+    document.getElementById('loading').style.display = ''; 
+    document.getElementById('tabuleiroGerado').textContent = 'Aguarde o processamento...';
     limpaDisplayDoTabuleiro();
     document.getElementById('atualizaTabuleiro').style.display = 'none';
     document.getElementById('tituloGerador').style.display = 'none';
-    document.getElementById('tabuleiroGerado').textContent = 'Aguarde o processamento...';
-    document.getElementById('loading').style.display = '';  
 
-
+ 
     setTimeout(() => {
         geraUmTabuleiroValido(tabuleiro);
     }, 0);

@@ -17,11 +17,11 @@ function loadCabecalhoeRodape() {
         .then(data => document.getElementById('rodape').innerHTML = data);
 }
 
-document.getElementById('atualizaTabuleiroOculto1').addEventListener('click', () => {inicioDeJogo(1, 1), document.getElementById('tituloPagina').innerHTML = 'Nível Moleza';});
-document.getElementById('atualizaTabuleiroOculto2').addEventListener('click', () => {inicioDeJogo(2, 2), document.getElementById('tituloPagina').innerHTML = 'Nível Fácil';});
-document.getElementById('atualizaTabuleiroOculto3').addEventListener('click', () => {inicioDeJogo(3, 3), document.getElementById('tituloPagina').innerHTML = 'Nível Médio';});
-document.getElementById('atualizaTabuleiroOculto4').addEventListener('click', () => {inicioDeJogo(4, 4), document.getElementById('tituloPagina').innerHTML = 'Nível Difícil';});
-document.getElementById('atualizaTabuleiroOculto5').addEventListener('click', () => {inicioDeJogo(5, 5), document.getElementById('tituloPagina').innerHTML = 'Nível Extremo';});
+document.getElementById('atualizaTabuleiroOculto1').addEventListener('click', () => {inicioDeJogo(15, 1), document.getElementById('tituloPagina').innerHTML = 'Nível Moleza';});
+document.getElementById('atualizaTabuleiroOculto2').addEventListener('click', () => {inicioDeJogo(28, 2), document.getElementById('tituloPagina').innerHTML = 'Nível Fácil';});
+document.getElementById('atualizaTabuleiroOculto3').addEventListener('click', () => {inicioDeJogo(39, 3), document.getElementById('tituloPagina').innerHTML = 'Nível Médio';});
+document.getElementById('atualizaTabuleiroOculto4').addEventListener('click', () => {inicioDeJogo(46, 4), document.getElementById('tituloPagina').innerHTML = 'Nível Difícil';});
+document.getElementById('atualizaTabuleiroOculto5').addEventListener('click', () => {inicioDeJogo(55, 5), document.getElementById('tituloPagina').innerHTML = 'Nível Extremo';});
 document.getElementById('num1').addEventListener('click', () => {preencheInputSelecionada(1)});
 document.getElementById('num2').addEventListener('click', () => {preencheInputSelecionada(2)});
 document.getElementById('num3').addEventListener('click', () => {preencheInputSelecionada(3)});
