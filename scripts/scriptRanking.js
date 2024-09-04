@@ -1,20 +1,36 @@
 import { consultaRankings } from "./bdsudoku.js";
 
 window.onload = loadCabecalhoeRodape;
-function loadCabecalhoeRodape() {
-    fetch('https://ti0aly.github.io/gosudoku/header.html')
+
+async function loadCabecalhoeRodape() {
+    // Carrega o cabeçalho
+    await fetch('https://ti0aly.github.io/gosudoku/header.html')
         .then(response => response.text())
         .then(data => document.getElementById('cabecalho').innerHTML = data);
 
-        fetch('https://ti0aly.github.io/gosudoku/footer.html')
+    // Carrega o rodapé
+    await fetch('https://ti0aly.github.io/gosudoku/footer.html')
         .then(response => response.text())
         .then(data => document.getElementById('rodape').innerHTML = data);
+            // Aguarda a consulta dos rankings
+    let [rankingMoleza, rankingFacil, rankingMedio, rankingDificil, rankingExtremo] = await consultaRankings();
+
+    const rMoleza = formataRankingHtml(rankingMoleza);
+    const rFacil = formataRankingHtml(rankingFacil);
+    const rMedio = formataRankingHtml(rankingMedio);
+    const rDificil = formataRankingHtml(rankingDificil);
+    const rExtremo = formataRankingHtml(rankingExtremo);
+
+    document.getElementById('rankingExtremo').innerHTML = '<table class="tabelaRanking"><caption>EXTREMO</caption>' + rExtremo;
+    document.getElementById('rankingDificil').innerHTML = '<table class="tabelaRanking"><caption>DIFÍCIL</caption>' + rDificil;
+    document.getElementById('rankingMedio').innerHTML = '<table class="tabelaRanking"><caption>MÉDIO</caption>' + rMedio;
+    document.getElementById('rankingFacil').innerHTML = '<table class="tabelaRanking"><caption>FÁCIL</caption>' + rFacil;
+    document.getElementById('rankingMoleza').innerHTML = '<table class="tabelaRanking"><caption>MOLEZA</caption>' + rMoleza;
+
+    document.getElementById('jogarNovamente').style.display = '';
 }
 
-
-let rankingMoleza, rankingFacil, rankingMedio, rankingDificil, rankingExtremo;
-
-[rankingMoleza, rankingFacil, rankingMedio, rankingDificil, rankingExtremo] = await consultaRankings();
+let [rankingMoleza, rankingFacil, rankingMedio, rankingDificil, rankingExtremo] = await consultaRankings();
 
 const rMoleza = formataRankingHtml(rankingMoleza);
 const rFacil = formataRankingHtml(rankingFacil);
