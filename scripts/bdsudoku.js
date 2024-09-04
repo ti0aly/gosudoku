@@ -41,6 +41,33 @@ export async function consultaTabuleiroAleatorio() {
   }
 }
 
+/* export async function consultaRankings() {
+  let valoresMoleza = consultaRanking(rankingMoleza);
+  let valoresFacil = consultaRanking(rankingFacil);
+  let valoresMedio = consultaRanking(rankingMedio);
+  let valoresDificil = consultaRanking(rankingDificil);
+  let valoresExtremo = consultaRanking(rankingExtremo);
+  console.log(valoresMoleza);
+  return [valoresMoleza, valoresFacil, valoresMedio, valoresDificil, valoresExtremo];
+}
+
+export async function consultaRanking(linkDoNode) {
+  try {
+      const pegaLink = await get(linkDoNode);
+      const data = pegaLink.val();
+      let lista = Array;
+      lista = Object.keys(data);
+      let valores = [];
+      for (const chave of lista) {
+        valores.push(data[chave]);
+      }
+      return valores
+  } catch (error) {
+      console.error('Erro ao consultar os dados de ranking.', error);
+      return null;
+  }
+} */
+
 export async function consultaRankings() {
   try {
       const moleza = await get(rankingMoleza);
@@ -84,7 +111,7 @@ export async function consultaRankings() {
       }
 
       for (const chave of valoresDificilLista) {
-        valoresFacil.push(dataDificil[chave]);
+        valoresDificil.push(dataDificil[chave]);
       }
 
       for (const chave of valoresExtremoLista) {
@@ -153,22 +180,14 @@ export async function salvarDadosRanking(nome, tempo, erros, nivel) {
     default:
       console.log('Erro ao selecionar ranking.');
   }
-  let tamanho = await consultaTamanhoDados(nodeDoRanking);
-  if (tamanho === null) {
-    tamanho = 0;
-  }
   const dadosJogador = {
     'nome' : nome,
     'tempo': tempo,
     'erros' : erros,
     'nivel' : nivel
   };
-  const dadosParaAtualizar = {
-    [tamanho + 1] : dadosJogador
-    
-  };
 
-return update(nodeDoRanking, dadosParaAtualizar)
+return push(nodeDoRanking, dadosJogador)
       .then(() => {
           console.log('Dados salvos com sucesso!');
       })

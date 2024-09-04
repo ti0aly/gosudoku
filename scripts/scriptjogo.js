@@ -17,9 +17,9 @@ function loadCabecalhoeRodape() {
         .then(data => document.getElementById('rodape').innerHTML = data);
 }
 
-document.getElementById('atualizaTabuleiroOculto1').addEventListener('click', () => {inicioDeJogo(1, 1), document.getElementById('tituloPagina').innerHTML = 'Nível Moleza';});
-document.getElementById('atualizaTabuleiroOculto2').addEventListener('click', () => {inicioDeJogo(2, 2), document.getElementById('tituloPagina').innerHTML = 'Nível Fácil';});
-document.getElementById('atualizaTabuleiroOculto3').addEventListener('click', () => {inicioDeJogo(39, 3), document.getElementById('tituloPagina').innerHTML = 'Nível Médio';});
+document.getElementById('atualizaTabuleiroOculto1').addEventListener('click', () => {inicioDeJogo(15, 1), document.getElementById('tituloPagina').innerHTML = 'Nível Moleza';});
+document.getElementById('atualizaTabuleiroOculto2').addEventListener('click', () => {inicioDeJogo(26, 2), document.getElementById('tituloPagina').innerHTML = 'Nível Fácil';});
+document.getElementById('atualizaTabuleiroOculto3').addEventListener('click', () => {inicioDeJogo(38, 3), document.getElementById('tituloPagina').innerHTML = 'Nível Médio';});
 document.getElementById('atualizaTabuleiroOculto4').addEventListener('click', () => {inicioDeJogo(46, 4), document.getElementById('tituloPagina').innerHTML = 'Nível Difícil';});
 document.getElementById('atualizaTabuleiroOculto5').addEventListener('click', () => {inicioDeJogo(55, 5), document.getElementById('tituloPagina').innerHTML = 'Nível Extremo';});
 document.getElementById('num1').addEventListener('click', () => {preencheInputSelecionada(1)});
@@ -66,6 +66,7 @@ async function inicioDeJogo(quantidade, nivel) {
     preencheCampoQuantidadeOculta(tabuleiroAtual, posicoesOcultas);
     document.getElementById('nivelDoJogo').style.display = 'none';
     startTimer();
+    verificaTodosBotoesParaEsconder();
 }
 
 function preencheInputSelecionada(valor) {
@@ -99,8 +100,30 @@ function verificaCorreto(tabuleiroAtual) {
             document.getElementById('mostraErros').innerHTML = 'Número de erros:' + erros;
         } else {
             document.getElementById(i).classList.remove('error');
+            verificaTodosBotoesParaEsconder();
             verificaFimDeJogo(listaTabuleiro);
         }
+    }
+}
+
+function verificaTodosBotoesParaEsconder() {
+    for (let i=1; i<=9;i++) {
+        verificaEscondeNumeroBt(i);
+    }
+}
+
+function verificaEscondeNumeroBt(numero) {
+    let counter = 0;
+    for (let i = 1; i <= 81; i++) {
+        if (document.getElementById(i).value == numero) {
+            counter++
+        }
+    }
+    let ids= ["", "num1", "num2", "num3", "num4", "num5", "num6", "num7", "num8", "num9"];
+    if (counter == 9) {
+        document.getElementById(ids[numero]).style.opacity ='0.3';
+    } else {
+        document.getElementById(ids[numero]).style.opacity ='1';
     }
 }
 
@@ -190,18 +213,11 @@ function stopTimer() {
     timerInterval = null;
 }
 
-function resetTimer() {
-    elapsedTime = 0;
-    document.getElementById('timer').textContent = formatTime(elapsedTime);
-}
-
 function registraRanking() {
     let nome = document.getElementById('digitaNome').value;
-    let tempo = elapsedTime;
-    let numeroDeErros = erros;
-    let nivel = nivelDoJogoAtual;
-    salvarDadosRanking(nome, tempo, numeroDeErros, nivel);
-    document.getElementById('tituloPagina').innerHTML = nome + "<br>Você terminou em " + formatTime(tempo) + " minutos.<br>Número de erros: " + numeroDeErros;
+    salvarDadosRanking(nome, elapsedTime, erros, nivelDoJogoAtual);
+    console.log('dados enviados pra salvar: ', nome, elapsedTime, erros, nivelDoJogoAtual);
+    document.getElementById('tituloPagina').innerHTML = nome + "<br>Você terminou em " + formatTime(elapsedTime) + " minutos.<br>Número de erros: " + erros;
     document.getElementById('registraRanking').style.display = 'none';
     document.getElementById('digitaNome').style.display = 'none';
     document.getElementById('timer').style.display = 'none';

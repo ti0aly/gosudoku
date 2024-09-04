@@ -1,4 +1,3 @@
-// FAZER: ordenar ranking  
 import { consultaRankings } from "./bdsudoku.js";
 
 function loadCabecalhoeRodape() {
