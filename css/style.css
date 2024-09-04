@@ -60,6 +60,8 @@
     border-radius: 100%;
     border-style: none;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.37);
+    margin: auto;
+    text-align: center;
 
 }
 
@@ -193,7 +195,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: #490101;
     text-align: center;
-    background: linear-gradient(45deg, #F29E6D, #BF5841);
+    background: linear-gradient(to right, #F29E6D, #BF5841);
     background-attachment: fixed;
     height: 100vh; /* Garantir que o fundo cubra toda a altura da tela */
     margin-top: 0px;
