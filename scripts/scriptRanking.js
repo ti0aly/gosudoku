@@ -35,7 +35,7 @@ function formataRankingHtml(listaDeValores) {
     let listaDeValoresOrdenados = ordenaListaPorTempo(listaDeValores);
     let textoHtml = '<thead><tr><th>Nome</th><th>Tempo</th><th>Erros</th></tr></thead><tbody>';
     for (const linha of listaDeValoresOrdenados) {
-        textoHtml += '<tr><td>' + linha['nome'] + '</td><td>' + linha['tempo'] + '</td><td>' + linha['erros'] + '</td></tr>';
+        textoHtml += '<tr><td>' + linha['nome'] + '</td><td>' + linha['tempo'] + 's' + '</td><td>' + linha['erros'] + '</td></tr>';
     }
     textoHtml += '</tbody></table>';
     return textoHtml
