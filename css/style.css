@@ -232,7 +232,7 @@ main {
     border-width: 1px;
     aspect-ratio: 1 / 1;
 }
-.grid-item-input {
+.grid-item {
     
     background-color: #26010100;
     
@@ -246,7 +246,7 @@ main {
 
 }
 
-.grid-item input:hover {
+.grid-item:hover {
     background-color: #26010123;
     
 }
