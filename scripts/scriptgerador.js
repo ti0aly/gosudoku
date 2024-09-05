@@ -4,7 +4,10 @@ import { salvaDados } from './bdsudoku.js';
 function loadCabecalhoeRodape() {
     fetch('https://ti0aly.github.io/gosudoku/header.html')
         .then(response => response.text())
-        .then(data => document.getElementById('cabecalho').innerHTML = data);
+        .then(data => {
+            document.getElementById('cabecalho').innerHTML = data;
+            document.getElementById('menuGerador').classList.add('pagina-atual');
+        })
 
         fetch('https://ti0aly.github.io/gosudoku/footer.html')
         .then(response => response.text())

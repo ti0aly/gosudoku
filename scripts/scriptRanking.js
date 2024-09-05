@@ -1,11 +1,16 @@
 import { consultaRankings } from "./bdsudoku.js";
 
+
 loadCabecalhoeRodape();
+
 
 async function loadCabecalhoeRodape() {
     await fetch('https://ti0aly.github.io/gosudoku/header.html')
         .then(response => response.text())
-        .then(data => document.getElementById('cabecalho').innerHTML = data);
+        .then(data => {
+            document.getElementById('cabecalho').innerHTML = data;
+            document.getElementById('menuRanking').classList.add('pagina-atual');
+        });
     await fetch('https://ti0aly.github.io/gosudoku/footer.html')
         .then(response => response.text())
         .then(data => document.getElementById('rodape').innerHTML = data);
@@ -25,9 +30,7 @@ document.getElementById('rankingDificil').innerHTML = '<table class="tabelaRanki
 document.getElementById('rankingMedio').innerHTML = '<table class="tabelaRanking"><caption>MÉDIO</caption>' + rMedio;
 document.getElementById('rankingFacil').innerHTML = '<table class="tabelaRanking"><caption>FÁCIL</caption>' + rFacil;
 document.getElementById('rankingMoleza').innerHTML = '<table class="tabelaRanking"><caption>MOLEZA</caption>' + rMoleza;
-
 document.getElementById('jogarNovamente').style.display = '';
-
 
 function ordenaListaPorTempo(lista) {
     let propriedade = 'tempo';
@@ -47,3 +50,5 @@ function formataRankingHtml(listaDeValores) {
     textoHtml += '</tbody></table>';
     return textoHtml
 }
+
+document.getElementById('menuRanking').classList.add('paginaAtual');
