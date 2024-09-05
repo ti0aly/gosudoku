@@ -213,7 +213,7 @@ main {
 }
 
 .grid-of-grid-container {
-    width: 80%;
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(3, 33%);
     justify-content: center;
@@ -232,11 +232,11 @@ main {
     border-width: 1px;
     aspect-ratio: 1 / 1;
 }
-.grid-item input {
+.grid-item-input {
     
     background-color: #26010100;
-    width: 100%;
-    height: 100%;
+    
+    
     text-align: center;
     font-size: 150%;
     border-style: none;
