@@ -32,8 +32,9 @@ document.getElementById('rankingFacil').innerHTML = '<table class="tabelaRanking
 document.getElementById('rankingMoleza').innerHTML = '<table class="tabelaRanking"><caption>MOLEZA</caption>' + rMoleza;
 document.getElementById('jogarNovamente').style.display = '';
 
-function ordenaListaPorTempo(lista) {
-    let propriedade = 'tempo';
+function ordenaListaPorIndice(lista) {
+
+    let propriedade = 'indice';
     return lista.sort((a, b) => {
       if (a[propriedade] < b[propriedade]) return -1;
       if (a[propriedade] > b[propriedade]) return 1;
@@ -41,11 +42,44 @@ function ordenaListaPorTempo(lista) {
     });
   }
 
+  function adicionaCalculoRanking(listaDeValores) {
+    let erros, nivel, nome, tempo; 
+    let novaListaDeObjetos = [];
+    for (let object of listaDeValores) {
+        [erros, nivel, nome, tempo] = [object['erros'], object['nivel'], object['nome'], object['tempo']];    
+        let penalty = erros * 12;
+        let indice = tempo + penalty;
+        let novoObjeto = {
+            'erros' : erros,
+            'nivel' : nivel,
+            'nome' : nome,
+            'tempo': tempo,
+            'penalty': penalty,
+            'indice': indice
+        }
+        novaListaDeObjetos.push(novoObjeto);
+    }
+    return novaListaDeObjetos
+}
+
+
+
 function formataRankingHtml(listaDeValores) {
-    let listaDeValoresOrdenados = ordenaListaPorTempo(listaDeValores);
-    let textoHtml = '<thead><tr><th>Nome</th><th>Tempo</th><th>Erros</th></tr></thead><tbody>';
-    for (const linha of listaDeValoresOrdenados) {
-        textoHtml += '<tr><td>' + linha['nome'] + '</td><td>' + linha['tempo'] + 's' + '</td><td>' + linha['erros'] + '</td></tr>';
+    let listaDeValoresComIndice = adicionaCalculoRanking(listaDeValores);
+    let listaDeValoresOrdenados = ordenaListaPorIndice(listaDeValoresComIndice);
+    let textoHtml = '<thead><tr><th class="coluna-um">Nome</th><th>Tempo+Pênalti</th><th>Tempo</th><th>Erros</th></tr></thead><tbody>';
+    let count = 1;
+    for (const linha of listaDeValoresComIndice) {
+        if (count > 5) {
+            break
+        }
+        textoHtml += '<tr><td class="nomes-ranking"><strong> ' + count + 'º)</strong> ' + linha['nome'] 
+        if (count === 1) {
+            textoHtml+= '🏆';
+        }
+        
+        textoHtml += '</td><td>' + linha['indice'] + ' s </td><td>' + linha['tempo'] + ' s </td><td>' + linha['erros'] + '</td></tr>';
+        count++
     }
     textoHtml += '</tbody></table>';
     return textoHtml

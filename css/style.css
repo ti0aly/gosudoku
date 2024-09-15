@@ -91,10 +91,10 @@ main {
     grid-template-columns: repeat(3, 32%);
     gap: 3px;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 5px;
     border-width: 1px;
     aspect-ratio: 1 / 1;
-    box-shadow: 5px 5px 5px rgba(43, 16, 5, 0.356);
+    box-shadow: inset 5px 5px 5px rgba(43, 16, 5, 0.356);
 }
 
 .grid-item input {
@@ -301,7 +301,7 @@ h2 {
     padding: 0;
     text-indent: 0;
     color:#260101;
-    font-size: 12px;
+    font-size: 14px;
     text-shadow: 1px 1px 2px #2601018e;
 
 }
@@ -325,24 +325,33 @@ h2 {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.39);
   }
 
-  th {
+th {
     background-color: #f268498e;
-    padding: 2%;
+    padding: 2% 0% 2% 0%;
     border-radius: 4px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.39);
 }
 
 td {
-    width: 33%;
+    width: 20%;
     height: 30px;
     background: linear-gradient(to bottom, #f7daad, #31020215);
     border-radius: 4px;
     box-shadow: C
 }
 
+.coluna-um {
+    width: 40%;
+}
+
 th:hover, td:hover {
     background-color: rgba(255, 0, 0, 0.164);
 }
+
+.nomes-ranking {
+    text-align: justify;
+}
+
 .textoRodape {
     margin: auto;
     text-indent: 0;
@@ -368,3 +377,22 @@ th:hover, td:hover {
     color: red;
 }
 
+.text-center {
+    text-align: center;
+}
+
+.what-is-new {
+    width: 50%;
+    outline-width: 2px;
+    outline-color: rgb(255, 72, 0);
+    outline-style: dashed;
+    border-radius: 10px;
+    display: inline-flex;
+    margin: 15px;
+    padding: 5px;
+    text-align: justify;
+}
+
+h4 {
+    margin: 0;
+}
