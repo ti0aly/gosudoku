@@ -382,7 +382,6 @@ th:hover, td:hover {
 }
 
 .what-is-new {
-    width: 50%;
     outline-width: 2px;
     outline-color: rgb(255, 72, 0);
     outline-style: dashed;
