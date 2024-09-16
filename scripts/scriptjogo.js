@@ -50,7 +50,6 @@ function marcaItemPeloValor(valor) {
     for (let id = 1; id <= 81; id++) {
         document.getElementById(id).classList.remove('select');
     }
-
     for (let id = 1; id <= 81; id++) {
         if (document.getElementById(id).value == valor && document.getElementById(id).value != ' ') {
             document.getElementById(id).classList.add('select');
@@ -61,21 +60,21 @@ function marcaItemPeloValor(valor) {
 async function inicioDeJogo(quantidade, nivel) {
     nivelDoJogoAtual = nivel; 
     [tabuleiroAtual, numeroDoArray] = await consultaTabuleiroAleatorio();
-    console.log('tabuleiro sorteado: ', tabuleiroAtual);
-    console.log('chave do Array: ', numeroDoArray);
     document.getElementById('mostraNumeroDoJogo').style.display = '';
     document.getElementById('mostraNumeroDoJogo').innerHTML = 'ID do tabuleiro: ' + numeroDoArray;
     let posicoesOcultas = geraListaRandomica(quantidade);
     preencheCampoQuantidadeOculta(tabuleiroAtual, posicoesOcultas);
     document.getElementById('nivelDoJogo').style.display = 'none';
+    document.getElementById('novidades').style.display = 'none';
     startTimer();
-    verificaTodosBotoesParaEsconder();
+    verificaTodosBotoesParaEsconder(tabuleiroAtual);
 }
 
 function preencheInputSelecionada(valor) {
         if (inputSelecionada != null) {
             inputSelecionada.value = valor;
             verificaCorreto(tabuleiroAtual);
+            marcaItemPeloValor(valor);
         } else {
             alert("Selecione um campo de input");
         }
@@ -96,29 +95,30 @@ function verificaFimDeJogo(tabuleiroAtual) {
 function verificaCorreto(tabuleiroAtual) {
     let listaTabuleiro = converteTabuleiroemLista(tabuleiroAtual);
     for (let i = 1; i <= 81; i++) {
-        if (document.getElementById(i).value == ' ') {
-        } else if (document.getElementById(i).value != listaTabuleiro[i]) {
+        if (document.getElementById(i).value != listaTabuleiro[i] && document.getElementById(i).value != ' ' ) {
             document.getElementById(i).classList.add('error');
             erros++;
-            document.getElementById('mostraErros').innerHTML = 'Número de erros:' + erros;
-        } else {
+            document.getElementById('mostraErros').innerHTML = 'Número de erros: ' + erros;
+        } 
+        else {
             document.getElementById(i).classList.remove('error');
-            verificaTodosBotoesParaEsconder();
+            verificaTodosBotoesParaEsconder(tabuleiroAtual);
             verificaFimDeJogo(listaTabuleiro);
         }
     }
 }
 
-function verificaTodosBotoesParaEsconder() {
+function verificaTodosBotoesParaEsconder(tabuleiroAtual) {
     for (let i=1; i<=9;i++) {
-        verificaEscondeNumeroBt(i);
+        verificaEscondeNumeroBt(i, tabuleiroAtual);
     }
 }
 
-function verificaEscondeNumeroBt(numero) {
+function verificaEscondeNumeroBt(numero, tabuleiroAtualNormal) {
     let counter = 0;
+    let tabuleiroAtual = converteTabuleiroemLista(tabuleiroAtualNormal);
     for (let i = 1; i <= 81; i++) {
-        if (document.getElementById(i).value == numero) {
+        if (document.getElementById(i).value == numero && tabuleiroAtual[i] == numero)  {
             counter++
         }
     }
