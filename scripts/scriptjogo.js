@@ -258,3 +258,30 @@ function cancelaJogoPorErros(errosJogo) {
             break;
     }
 }
+
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+
+const installButton = document.getElementById('install-button');
+installButton.addEventListener('click', () => {
+if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+    if (choiceResult.outcome === 'accepted') {
+        console.log('Usuário aceitou instalar o app.');
+    } else {
+        console.log('Usuário recusou instalar o app.');
+    }
+    deferredPrompt = null;
+    });
+} else {
+    console.log('O prompt de instalação não está disponível.');
+    alert('Não foi possível adicionar à tela de início, mas você pode fazer isso manualmente no seu navegador.');
+}
+});
+
+setTimeout(function () {document.getElementById('install-button').style.display = ''}, 20000);
+setTimeout(function () {document.getElementById('install-button').style.display = ''}, 40000);
