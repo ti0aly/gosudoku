@@ -149,10 +149,10 @@ main {
   }
 
 #botoesNum2 {
-    padding-left: 21%;
-    padding-right: 21%;
+    padding-left: 13%;
+    padding-right: 13%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 botões na segunda linha */
+    grid-template-columns: repeat(5, 1fr); /* 5 botões na segunda linha */
     grid-gap: 10px;
     justify-content: center;
     cursor: pointer;

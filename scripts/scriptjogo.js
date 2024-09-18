@@ -2,6 +2,7 @@ import { salvarDadosRanking, consultaTabuleiroAleatorio} from './bdsudoku.js';
 
 const numeroDeErrosAceitos = 5;
 var erros = 0; 
+var errosComputados = [];
 var tabuleiroAtual;
 var inputSelecionada = null;
 var numeroDoArray;
@@ -35,6 +36,7 @@ document.getElementById('num6').addEventListener('click', () => {preencheInputSe
 document.getElementById('num7').addEventListener('click', () => {preencheInputSelecionada(7)});
 document.getElementById('num8').addEventListener('click', () => {preencheInputSelecionada(8)});
 document.getElementById('num9').addEventListener('click', () => {preencheInputSelecionada(9)});
+document.getElementById('del').addEventListener('click', () => {preencheInputSelecionada(' ')});
 document.getElementById('registraRanking').addEventListener('click', () => {registraRanking()});
 document.getElementById('jogarNovamente').style.display = 'none';
 document.getElementById('registraRanking').style.display = 'none';
@@ -95,17 +97,23 @@ function verificaFimDeJogo(tabuleiroAtual) {
 
 function verificaCorreto(tabuleiroAtual) {
     let listaTabuleiro = converteTabuleiroemLista(tabuleiroAtual);
-    
     for (let i = 1; i <= 81; i++) {
-        if (document.getElementById(i).value != listaTabuleiro[i] && document.getElementById(i).value != ' ' ) {
+        if (document.getElementById(i).value != listaTabuleiro[i] && document.getElementById(i).value != ' '  ) {
             document.getElementById(i).classList.add('error');
-            erros++;
-            cancelaJogoPorErros(erros);
+            if (!errosComputados.includes(i)) {
+                erros++;
+                cancelaJogoPorErros(erros);
+                errosComputados.push(i);
+            }
         } 
         else {
             document.getElementById(i).classList.remove('error');
             verificaTodosBotoesParaEsconder(tabuleiroAtual);
             verificaFimDeJogo(listaTabuleiro);
+            if (errosComputados.includes(i)) {
+                const indice = errosComputados.indexOf(i);
+                errosComputados[indice] = 0;
+            }
         }
     }
 }
@@ -259,7 +267,7 @@ function cancelaJogoPorErros(errosJogo) {
     }
 }
 
-let deferredPrompt;
+/* let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
@@ -284,4 +292,4 @@ if (deferredPrompt) {
 });
 
 setTimeout(function () {document.getElementById('install-button').style.display = ''}, 20000);
-setTimeout(function () {document.getElementById('install-button').style.display = ''}, 40000);
+setTimeout(function () {document.getElementById('install-button').style.display = 'none'}, 40000); */
