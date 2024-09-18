@@ -1,5 +1,6 @@
 import { salvarDadosRanking, consultaTabuleiroAleatorio} from './bdsudoku.js';
 
+const numeroDeErrosAceitos = 5;
 var erros = 0; 
 var tabuleiroAtual;
 var inputSelecionada = null;
@@ -94,11 +95,12 @@ function verificaFimDeJogo(tabuleiroAtual) {
 
 function verificaCorreto(tabuleiroAtual) {
     let listaTabuleiro = converteTabuleiroemLista(tabuleiroAtual);
+    
     for (let i = 1; i <= 81; i++) {
         if (document.getElementById(i).value != listaTabuleiro[i] && document.getElementById(i).value != ' ' ) {
             document.getElementById(i).classList.add('error');
             erros++;
-            document.getElementById('mostraErros').innerHTML = 'Número de erros: ' + erros;
+            cancelaJogoPorErros(erros);
         } 
         else {
             document.getElementById(i).classList.remove('error');
@@ -227,4 +229,32 @@ function registraRanking() {
     document.getElementById('loader').style.display = 'none';
     
     window.location.replace('https://ti0aly.github.io/gosudoku/ranking.html');
+}
+
+function cancelaJogoPorErros(errosJogo) {
+    const exibeErros = document.getElementById('mostraErros');
+    switch (errosJogo) {
+        case 1 :
+            exibeErros.innerHTML = 'Você só pode errar mais ' + (numeroDeErrosAceitos - errosJogo) + ' vezes!';
+            break;
+        case 2 :
+            exibeErros.innerHTML = 'Só pode errar mais ' + (numeroDeErrosAceitos - errosJogo) + ' vezes!';
+            break;
+        case 3 : 
+            exibeErros.classList.add('erro-vermelho');
+            exibeErros.innerHTML = 'Cuidado!!! Restam ' + (numeroDeErrosAceitos - errosJogo) + ' erros apenas!';
+            break;
+        case 4 :
+            exibeErros.innerHTML = 'Último erro ☠️';
+            break;
+        case 5 :
+            document.getElementById('tabuleiroGrande').style.display = 'none';
+            document.getElementById('botoesNum').style.display = 'none';
+            document.getElementById('botoesNum2').style.display = 'none';
+            exibeErros.style.display = 'none';
+            document.getElementById('jogarNovamente').style.display = '';
+            stopTimer();
+            document.getElementById('tituloPagina').innerHTML = '😔 Não foi dessa vez'
+            break;
+    }
 }
