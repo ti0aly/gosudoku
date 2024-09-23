@@ -217,7 +217,7 @@ function updateTimer() {
 
 function startTimer() {
     if (!timerInterval) {
-        timerInterval = setInterval(updateTimer, 1000); // Atualiza o timer a cada segundo
+        timerInterval = setInterval(updateTimer, 1000); 
     }
 }
 
@@ -235,7 +235,6 @@ function registraRanking() {
     document.getElementById('digitaNome').style.display = 'none';
     document.getElementById('timer').style.display = 'none';
     document.getElementById('loader').style.display = 'none';
-    
     window.location.replace('https://ti0aly.github.io/gosudoku/ranking.html');
 }
 

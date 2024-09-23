@@ -42,7 +42,7 @@ function ordenaListaPorIndice(lista) {
     });
   }
 
-  function adicionaCalculoRanking(listaDeValores) {
+function adicionaCalculoRanking(listaDeValores) {
     let erros, nivel, nome, tempo; 
     let novaListaDeObjetos = [];
     for (let object of listaDeValores) {
@@ -57,7 +57,10 @@ function ordenaListaPorIndice(lista) {
             'penalty': penalty,
             'indice': indice
         }
-        novaListaDeObjetos.push(novoObjeto);
+        if (erros <5 ) {
+            novaListaDeObjetos.push(novoObjeto);
+        }
+
     }
     return novaListaDeObjetos
 }
