@@ -355,6 +355,7 @@ th:hover, td:hover {
 
 .nomes-ranking {
     text-align: justify;
+    padding-left: 12px;
 }
 
 .textoRodape {

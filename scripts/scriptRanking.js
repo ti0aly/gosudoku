@@ -32,14 +32,26 @@ document.getElementById('rankingFacil').innerHTML = '<table class="tabelaRanking
 document.getElementById('rankingMoleza').innerHTML = '<table class="tabelaRanking"><caption>MOLEZA</caption>' + rMoleza;
 document.getElementById('jogarNovamente').style.display = '';
 
-function ordenaListaPorIndice(lista) {
+// function ordenaListaPorIndice(lista) {
 
-    let propriedade = 'indice';
-    return lista.sort((a, b) => {
-      if (a[propriedade] < b[propriedade]) return -1;
-      if (a[propriedade] > b[propriedade]) return 1;
-      return 0;
-    });
+//     let propriedade = 'indice';
+//     return lista.sort((a, b) => {
+//       if (a[propriedade] < b[propriedade]) return -1;
+//       if (a[propriedade] > b[propriedade]) return 1;
+//       return 0;
+//     });
+//   }
+function ordenaListaPorErrosETempo(lista) {
+    let propriedade = 'erros';
+    let tempo = 'tempo';
+    
+    lista.sort((a, b) => {
+        if (a['erros'] === b['erros']) {
+          return a['tempo'] - b['tempo'];  // Ordena pelos menores tempos se os erros forem iguais
+        } else {
+          return a['erros'] - b['erros'];  // Ordena pelos menores erros
+        }
+      });
   }
 
 function adicionaCalculoRanking(listaDeValores) {
@@ -69,19 +81,25 @@ function adicionaCalculoRanking(listaDeValores) {
 
 function formataRankingHtml(listaDeValores) {
     let listaDeValoresComIndice = adicionaCalculoRanking(listaDeValores);
-    let listaDeValoresOrdenados = ordenaListaPorIndice(listaDeValoresComIndice);
-    let textoHtml = '<thead><tr><th class="coluna-um">Nome</th><th>Tempo+Pênalti</th><th>Tempo</th><th>Erros</th></tr></thead><tbody>';
+    let listaDeValoresOrdenados = ordenaListaPorErrosETempo(listaDeValoresComIndice);
+    let textoHtml = '<thead><tr><th class="coluna-um">Nome</th><th>Tempo</th><th>Erros</th></tr></thead><tbody>';
     let count = 1;
     for (const linha of listaDeValoresComIndice) {
         if (count > 5) {
             break
         }
-        textoHtml += '<tr><td class="nomes-ranking"><strong> ' + count + 'º)</strong> ' + linha['nome'] 
+        textoHtml += '<tr><td class="nomes-ranking"><strong> ';  
         if (count === 1) {
             textoHtml+= '🏆';
+        } else if (count === 2) {
+            textoHtml+= '🥈';
+        } else if (count === 3) {
+            textoHtml+= '🥉';
+        } else {
+            textoHtml+= ' '+ count + 'º) ';
         }
         
-        textoHtml += '</td><td>' + linha['indice'] + ' s </td><td>' + linha['tempo'] + ' s </td><td>' + linha['erros'] + '</td></tr>';
+        textoHtml += '</strong> ' + linha['nome'] + '</td><td>' + linha['tempo'] + ' s </td><td>' + linha['erros'] + '</td></tr>';
         count++
     }
     textoHtml += '</tbody></table>';
